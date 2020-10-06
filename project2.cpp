@@ -31,11 +31,11 @@ int main()
 {
   int rowIndexTemp = 11;
   int colIndexTemp = 36;
-  RowColumnClass testRowColClass();
+  RowColumnClass testRowColClass(0, 0);
 
-  testRowColClass.printRowCol;
+  testRowColClass.printRowCol();
   testRowColClass.setRowCol(rowIndexTemp, colIndexTemp);
-  testRowColClass.printRowCol;
+  testRowColClass.printRowCol();
 
   return 0;
 }
