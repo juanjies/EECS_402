@@ -9,8 +9,8 @@ using namespace std;
 class RowColumnClass
 {
   private:
-    int rowIndex;  // Q: should it be a const?
-    int colIndex;  // Q: should it be a const?
+    int rowIndex;  
+    int colIndex;  
 
   public:
     RowColumnClass();
@@ -23,10 +23,9 @@ class RowColumnClass
     void addRowColTo(RowColumnClass &inRowCol);
     void printRowCol();
 };
-/*
-  Main func is not required in this project but
-  used to test the created classes. 
-*/
+
+//  Main func is not required in this project but
+//  used to test the created classes. 
 int main()
 {
   int rowIndexTemp = 11;
@@ -40,69 +39,66 @@ int main()
   return 0;
 }
 
-/*
-  This default ctor initialize both the row and 
-  column values to -99999.
-*/
+// a default ctor 
+// initialize both the row and column values to -99999.
 RowColumnClass::RowColumnClass()
 {
-  int defValue = -99999; // Q: should it be a const?
+  const int defValue = -99999; // Q: should it be a const? >> global const
   rowIndex = defValue;
   colIndex = defValue;
 }
-/*
-  This ctor sets the row and column values to the 
-  corresponding values passed in.
-*/
+
+//  a value ctor
+//  setting the row and column values to the values passed in.
 RowColumnClass::RowColumnClass(int inRow, int inCol)
 {
   rowIndex = inRow;
   colIndex = inCol;
 }
-/* 
-  set the both attributes of RowIndex and ColIndex 
-  to the values passed in
-*/
-RowColumnClass::setRowCol(int inRow, int inCol)
+
+//  set the both attributes of RowIndex and ColIndex 
+//  to the values passed in
+
+void RowColumnClass::setRowCol(int inRow, int inCol)
 {
   rowIndex = inRow;
   colIndex = inCol;
 }
-/* 
-  set the attribute of RowIndex to the values passed in
-*/
-RowColumnClass::setRow(int inRow)
+
+//  set the attribute of RowIndex to the values passed in
+void RowColumnClass::setRow(int inRow)
 {
   rowIndex = inRow;
 }
-/* 
-  set the attribute of ColIndex to the values passed in
-*/
-RowColumnClass::setCol(int inCol)
+
+//  set the attribute of ColIndex to the values passed in
+void RowColumnClass::setCol(int inCol)
 {
   colIndex = inCol;
 }
+
 // get the attribute value of RowIndex
-RowColumnClass::getRow()
+void RowColumnClass::getRow()
 {
   return rowIndex;
 }
+
 // get the attribute value of ColIndex
-RowColumnClass::getCol()
+void RowColumnClass::getCol()
 {
   return colIndex;
 }
-/* 
-  adds the row and column index values in the input parameter 
-  to the row and column index of the object the func is called on
-*/
-RowColumnClass::addRowColTo(RowColumnClass &inRowCol)
+
+//  adds the row and column index values in the input parameter 
+//  to the row and column index of the object the func is called on
+void RowColumnClass::addRowColTo(RowColumnClass &inRowCol)
 {
-  setRow(getRow + inRowCol.getRow);
-  setCol(getCol + inRowCol.getCol);
+  setRow(getRow() + inRowCol.getRow());
+  setCol(getCol() + inRowCol.getCol());
 }
+
 // prints the attributes' values of rowIndex and colIndex
-RowColumnClass::printRowCol()
+void RowColumnClass::printRowCol()
 {
   cout << "[" << rowIndex << ',' << colIndex << "]" << endl;
 }
