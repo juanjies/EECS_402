@@ -130,9 +130,9 @@ bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
   inGreen = clipColor(inGreen);
   inBlue = clipColor(inBlue);
   
-  return (needClip(inRed) 
+  return ((needClip(inRed) 
           || needClip(inGreen)
-          || needClip(inBlue));
+          || needClip(inBlue) ));
 }
 
 // set the color as the same as that in the input object
@@ -144,9 +144,9 @@ bool ColorClass::setTo(ColorClass &inColor)
   inGreen = clipColor(inColor.inGreen);
   inBlue = clipColor(inColor.inBlue);
 
-  return (needClip(inColor.inRed) 
+  return ((needClip(inColor.inRed) 
           || needClip(inColor.inGreen)
-          || needClip(inColor.inBlue));
+          || needClip(inColor.inBlue)));
 }
 
 // add the color values of the input object 
