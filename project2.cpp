@@ -109,7 +109,7 @@ int ColorClass::clipColor(int inColor)
   {
     inColor = COLOR_RANGE_MIN;
   }
-  elseif (inColor > COLOR_RANGE_MAX)
+  else if (inColor > COLOR_RANGE_MAX)
   {
     inColor = COLOR_RANGE_MAX;
   }
@@ -132,7 +132,7 @@ bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
   
   return (needClip(inRed) 
           || needClip(inGreen)
-          || needClip(inBlue))
+          || needClip(inBlue));
 }
 
 // set the color as the same as that in the input object
@@ -146,13 +146,13 @@ bool ColorClass::setTo(ColorClass &inColor)
 
   return (needClip(inColor.inRed) 
           || needClip(inColor.inGreen)
-          || needClip(inColor.inBlue))
+          || needClip(inColor.inBlue));
 }
 
 // add the color values of the input object 
 // if any of result color values needs to be clipped
 // return true
-bool addColor(ColorClass &rhs)
+bool ColorClass::addColor(ColorClass &rhs)
 {
   bool doClip = false;
   doClip = needClip(inRed + rhs.inRed)
