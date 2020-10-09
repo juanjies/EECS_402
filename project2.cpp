@@ -168,7 +168,7 @@ bool ColorClass::addColor(ColorClass &rhs)
 // subtract the color values of the input object 
 // if any of result color values needs to be clipped
 // return true
-bool subtractColor(ColorClass &rhs)
+bool ColorClass::subtractColor(ColorClass &rhs)
 {
   bool doClip = false;
   doClip = needClip(inRed - rhs.inRed)
