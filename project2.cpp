@@ -90,11 +90,11 @@ bool needClip(int inColor)
 {
   if (inColor > COLOR_RANGE_MAX)
   {
-    reture true;
+    return true;
   }
   else if (inColor < COLOR_RANGE_MIN)
   {
-    return ture;
+    return true;
   }
   else
   {
@@ -103,7 +103,7 @@ bool needClip(int inColor)
 }
 
 // clip the input color 
-int ColorClass::clipColor(int inColor);
+int ColorClass::clipColor(int inColor)
 {
   if (inColor < COLOR_RANGE_MIN)
   {
