@@ -98,7 +98,7 @@ bool needClip(int inColor)
   }
   else
   {
-    ;
+    return false;
   }
 }
 
