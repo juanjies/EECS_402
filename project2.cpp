@@ -9,30 +9,34 @@ const int COLOR_RANGE_MAX = 1000;
 const int COLOR_RANGE_MIN = 0;
 const int DEF_ROW_COL_VALUE = -99999; // Q: should it be a const? >> global const
   // where should I declear global const?
+const int IMAGE_ROW = 10;
+const int IMAGE_COL = 18;
+
+bool needClip(int inColor); // global func
+// warning UNDEFINED REFERENCE 
+int  clipColor(int inColor);
 
 class ColorClass
 {
-private:
-  int inRed;
-  int inGreen;
-  int inBlue;
+  private:
+    int inRed;
+    int inGreen;
+    int inBlue;
 
-public:
-  ColorClass();
-  // ~ColorClass(); // do we need to have destructors?
-  void setToBlack();
-  void setToRed();
-  void setToGreen();
-  void setToBlue();
-  void setToWhite();
-  bool needClip(int inColor);
-  int  clipColor(int inColor);
-  bool setTo(int inRed, int inGreen, int inBlue);
-  bool setTo(ColorClass &inColor); 
-  bool addColor(ColorClass &rhs);
-  bool subtractColor(ColorClass &rhs);
-  bool adjustBrightness(double adjFactor);
-  void printComponentValues();
+  public:
+    ColorClass();
+    // ~ColorClass(); // do we need to have destructors?
+    void setToBlack();
+    void setToRed();
+    void setToGreen();
+    void setToBlue();
+    void setToWhite();
+    bool setTo(int inRed, int inGreen, int inBlue);
+    bool setTo(ColorClass &inColor); 
+    bool addColor(ColorClass &rhs);
+    bool subtractColor(ColorClass &rhs);
+    bool adjustBrightness(double adjFactor);
+    void printComponentValues();
 };
 
 // default constructor to set RGB to the max range
@@ -103,7 +107,7 @@ bool needClip(int inColor)
 }
 
 // clip the input color 
-int ColorClass::clipColor(int inColor)
+int clipColor(int inColor)
 {
   if (inColor < COLOR_RANGE_MIN)
   {
@@ -199,9 +203,9 @@ bool ColorClass::adjustBrightness(double adjFactor)
 // print out value as "R:<> G:<> B:<>"
 void ColorClass::printComponentValues()
 {
-  cout << "R:" << inRed   << " "
-       << "G:" << inGreen << " "
-       << "B:" << inBlue  << endl; 
+  cout << "R: " << inRed   << " "
+       << "G: " << inGreen << " "
+       << "B: " << inBlue  << endl; 
 }
 
 class RowColumnClass
@@ -221,6 +225,133 @@ class RowColumnClass
     void addRowColTo(RowColumnClass &inRowCol);
     void printRowCol();
 };
+
+class ColorImageClass
+{
+  private:
+    ColorClass image[IMAGE_ROW][IMAGE_COL];
+
+  public:
+    ColorImageClass();
+    void initializeTo(ColorClass &inColor);
+    bool addImageTo(ColorImageClass &rhsImg);
+    bool addImages(int numImgsToAdd, ColorImageClass imagesToAdd []);
+    bool setColorAtLocation(RowColumnClass &inRowCol, ColorClass &inColor);
+    bool getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor);
+    void printImage();
+  // ~ColorImageClass();
+};
+
+// default ctor sets all pixels to black
+ColorImageClass::ColorImageClass()
+{
+  for (i = 0; i < IMAGE_COL; i++)
+  {
+    for (j = 0; j < IMAGE_ROW; j++)
+    {
+      image[i][j].setToBlack();
+    }
+  }
+}
+
+// initializes all image pixels to the input
+void ColorImageClass::initializeTo(ColorClass &inColor)
+{
+  for (i = 0; i < IMAGE_COL; i++)
+  {
+    for (j = 0; j < IMAGE_ROW; j++)
+    {
+      image[i][j].setTo(inColor);
+    }
+  }
+}
+
+// pixel-wise addition of color index
+// return true if there's any clipping
+bool ColorImageClass::addImageTo(ColorImageClass &rhsImg);
+{
+  bool doClip = false;
+
+  for (i = 0; i < IMAGE_COL; i++)
+  // does it matter to loop thro col or row first?
+  {
+    for (j = 0; j < IMAGE_ROW; j++)
+    {
+      doClip = doClip || needClip(image[i][j].addColor(rhsImg[i][j]));
+      clipColor(image[i][j].addColor(rhsImg[i][j]));
+    }
+  }
+  return doClip;
+}
+
+// set the image values to be the sum of the corresponding 
+// pixels in each image in the imagesToAdd input
+bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd [])
+{
+  bool doClip = false;
+
+  for (i = 0; i < IMAGE_COL; i++) 
+  {
+    for (j = 0; j < IMAGE_ROW; j++)
+    {
+      for (k = 0; i < (numImgsToAdd-1); k++)
+      {
+        doClip = doClip || 
+                 needClip(imagesToAdd[k+1].addColor(imagesToAdd[k]));
+        clipColor(imagesToAdd[k+1].addColor(imagesToAdd[k]));
+      }
+      image[i][j].setTo(imagesToAdd[numImgsToAdd].[i][j]);
+    }
+  }
+  return doClip;
+}
+
+// set the pixel at the input location to the input color
+// return true if the location is valid 
+// return false if the location is not valid
+bool ColorImageClass::setColorAtLocation(RowColumnClass &inRowCol, ColorClass &inColor)
+{
+  if (inRowCol.getRow() < IMAGE_ROW && inRowCol.getCol() < IMAGE_COL)
+  {
+    image.setTo(inColor);
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+// set"outColor" to the pixel at the input location 
+// return true if the location is valid 
+// return false if the location is not valid
+bool ColorImageClass::getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor)
+{
+  if (inRowCol.getRow() < IMAGE_ROW && inRowCol.getCol() < IMAGE_COL)
+  {
+    outColor.setTo(image[inRowCol.getRow()][inRowCol.getCol()])
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+// print the contents of the image
+void ColorImageClass::printImage()
+{
+  for (i = 0; i < IMAGE_COL; i++)
+  {
+    for (j = 0; j < IMAGE_ROW; j++)
+    {
+      cout << "R: " << image[i][j].inRed << " "
+           << "G: " << image[i][j].inGreen << " "
+           << "B: " << image[i][j].inBlue << "--";
+    }
+    cout << endl;
+  }
+}
 
 //  Main func is not required in this project but
 //  used to test the created classes. 
@@ -299,3 +430,4 @@ void RowColumnClass::printRowCol()
 {
   cout << "[" << rowIndex << ',' << colIndex << "]" << endl;
 }
+
