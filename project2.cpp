@@ -289,7 +289,8 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
 {
   bool doClip = false;
 
-  for (int k = 0; k < (numImgsToAdd-1); k++)
+  //for (int k = 0; k < (numImgsToAdd-1); k++)
+  for (int k = 0; k < 2; k++)
   {
     doClip = (doClip || 
               imagesToAdd[k+1].addImageTo(imagesToAdd[k]) );
