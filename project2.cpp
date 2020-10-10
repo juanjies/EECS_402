@@ -277,8 +277,8 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
   {
     for (int j = 0; j < IMAGE_ROW; j++)
     {
-      doClip = doClip || needClip(image[i][j].addColor(rhsImg[i][j]));
-      clipColor(image[i][j].addColor(rhsImg[i][j]));
+      doClip = doClip || needClip(image[i][j].addColor(rhsImg.image[i][j]));
+      clipColor(image[i][j].addColor(rhsImg.image[i][j]));
     }
   }
   return doClip;
@@ -297,8 +297,9 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       for (int k = 0; i < (numImgsToAdd-1); k++)
       {
         doClip = doClip || 
-                 needClip(imagesToAdd[k+1].addColor(imagesToAdd[k]));
-        clipColor(imagesToAdd[k+1].addColor(imagesToAdd[k]));
+                 needClip(imagesToAdd[k+1].image[i][j].
+                   addColor(imagesToAdd[k]));
+        clipColor(imagesToAdd[k+1].image[i][j].addColor(imagesToAdd[k]));
       }
       image[i][j].setTo(imagesToAdd[numImgsToAdd].[i][j]);
     }
