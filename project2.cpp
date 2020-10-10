@@ -242,17 +242,16 @@ class ColorImageClass
     bool setColorAtLocation(RowColumnClass &inRowCol, ColorClass &inColor);
     bool getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor);
     void printImage();
-  // ~ColorImageClass();
 };
 
 // default ctor sets all pixels to black
 ColorImageClass::ColorImageClass()
 {
-  for (int i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_ROW; i++)
   {
-    for (int j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
-      image[i][j].setToBlue();
+      image[i][j].setToBlack();
     }
   }
 }
@@ -260,9 +259,9 @@ ColorImageClass::ColorImageClass()
 // initializes all image pixels to the input
 void ColorImageClass::initializeTo(ColorClass &inColor)
 {
-  for (int i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_ROW; i++)
   {
-    for (int j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
       image[i][j].setTo(inColor);
     }
@@ -275,10 +274,10 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
 {
   bool doClip = false;
 
-  for (int i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_ROW; i++)
   // does it matter to loop thro col or row first?
   {
-    for (int j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
       doClip = doClip || image[i][j].addColor(rhsImg.image[i][j]);
     }
@@ -292,9 +291,9 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
 {
   bool doClip = false;
 
-  for (int i = 0; i < IMAGE_COL; i++) 
+  for (int i = 0; i < IMAGE_ROW; i++) 
   {
-    for (int j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
       for (int k = 0; i < (numImgsToAdd-1); k++)
       {
@@ -343,9 +342,9 @@ bool ColorImageClass::getColorAtLocation(RowColumnClass &inRowCol, ColorClass &o
 // print the contents of the image
 void ColorImageClass::printImage()
 {
-  for (int i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_ROW; i++)
   {
-    for (int j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
       image[i][j].printComponentValues();
       cout << "--";
