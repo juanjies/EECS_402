@@ -219,7 +219,6 @@ class RowColumnClass
   public:
     RowColumnClass();
     RowColumnClass(int inRow, int inCol);
-    // ~RowColumnClass();
     void setRowCol(int inRow, int inCol);
     void setRow(int inRow);
     void setCol(int inCol);
@@ -301,7 +300,7 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
                  imagesToAdd[k+1].image[i][j].
                    addColor(imagesToAdd[k].image[i][j]) );
       }
-      image[i][j].setTo(imagesToAdd[numImgsToAdd-1].image[i][j]);
+      image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
     }
   }
   return doClip;
