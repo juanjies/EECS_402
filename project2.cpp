@@ -252,10 +252,7 @@ ColorImageClass::ColorImageClass()
   {
     for (int j = 0; j < IMAGE_ROW; j++)
     {
-      // image[i][j].setToBlack();
-      image[i][j].valRed = COLOR_RANGE_MIN;
-      image[i][j].valGreen = COLOR_RANGE_MIN;
-      image[i][j].valBlue = 50;
+      image[i][j].setToBlue();
     }
   }
 }
