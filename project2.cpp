@@ -368,7 +368,7 @@ void ColorImageClass::printImage()
 //  used to test the created classes. 
 int main()
 {
-  ColorClass testColor;
+  ColorClass testColor(100, 100, 100);
   RowColumnClass testRowCol;
   RowColumnClass testRowColOther(111, 222);
   ColorImageClass testImage;
