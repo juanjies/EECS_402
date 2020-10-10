@@ -343,11 +343,11 @@ bool ColorImageClass::getColorAtLocation(
 // print the contents of the image
 void ColorImageClass::printImage()
 {
-  for (int j = 0; j < IMAGE_COL; j++)
+  for (int i = 0; i < IMAGE_ROW; i++)
   {
-    for (int i = 0; i < IMAGE_ROW; i++)
+    for (int j = 0; j < IMAGE_COL; j++)
     {
-      image[i][j].printComponentValues();
+      image[i][j].printComponentValues()
       cout << "--";
     }
     cout << endl;
