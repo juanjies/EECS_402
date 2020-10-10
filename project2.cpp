@@ -268,7 +268,7 @@ void ColorImageClass::initializeTo(ColorClass &inColor)
 
 // pixel-wise addition of color index
 // return true if there's any clipping
-bool ColorImageClass::addImageTo(ColorImageClass &rhsImg);
+bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
 {
   bool doClip = false;
 
