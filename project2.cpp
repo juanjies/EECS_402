@@ -289,15 +289,16 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
 {
   bool doClip = false;
 
-  for (int i = 0; i < IMAGE_ROW; i++) 
+  for (int k = 0; k < (numImgsToAdd-1); k++)
+  {
+    doClip = (doClip || 
+              imagesToAdd[k+1].addImageTo(imagesToAdd[k]) );
+  }
+
+  for (int i = 0; i < IMAGE_ROW; i++)
   {
     for (int j = 0; j < IMAGE_COL; j++)
     {
-      for (int k = 0; k < (numImgsToAdd-1); k++)
-      {
-        doClip = (doClip || 
-                 imagesToAdd[k+1].addImageTo(imagesToAdd[k]) );
-      }
       image[i][j].setTo(imagesToAdd[numImgsToAdd-1].image[i][j]);
     }
   }
