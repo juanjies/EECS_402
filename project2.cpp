@@ -40,8 +40,8 @@ class ColorClass
 };
 
 // default constructor to set RGB to the max range
-ColorClass::ColorClass() 
 // Q: the order of class prototpye, main func, scope resolution
+ColorClass::ColorClass() 
 {
   inRed = COLOR_RANGE_MAX;
   inGreen = COLOR_RANGE_MAX;
@@ -226,6 +226,7 @@ class RowColumnClass
   public:
     RowColumnClass();
     RowColumnClass(int inRow, int inCol);
+    // ~RowColumnClass();
     void setRowCol(int inRow, int inCol);
     void setRow(int inRow);
     void setCol(int inCol);
