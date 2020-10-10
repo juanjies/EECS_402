@@ -301,7 +301,7 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
                  imagesToAdd[k+1].image[i][j].
                    addColor(imagesToAdd[k].image[i][j]);
       }
-      image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
+      image[i][j].setTo(imagesToAdd[numImgsToAdd-1].image[i][j]);
     }
   }
   return doClip;
@@ -326,7 +326,8 @@ bool ColorImageClass::setColorAtLocation(RowColumnClass &inRowCol, ColorClass &i
 // set"outColor" to the pixel at the input location 
 // return true if the location is valid 
 // return false if the location is not valid
-bool ColorImageClass::getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor)
+bool ColorImageClass::getColorAtLocation(
+       RowColumnClass &inRowCol, ColorClass &outColor)
 {
   if (inRowCol.getRow() < IMAGE_ROW && inRowCol.getCol() < IMAGE_COL)
   {
