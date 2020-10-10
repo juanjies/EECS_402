@@ -298,9 +298,9 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       {
         doClip = doClip || 
                  needClip(imagesToAdd[k+1].image[i][j].
-                   addColor(imagesToAdd[k].image[i][j]);
+                   addColor(imagesToAdd[k].image[i][j]));
         clipColor(imagesToAdd[k+1].image[i][j]
-          .addColor(imagesToAdd[k].image[i][j]);
+          .addColor(imagesToAdd[k].image[i][j]));
       }
       image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
     }
