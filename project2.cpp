@@ -562,6 +562,6 @@ void RowColumnClass::addRowColTo(RowColumnClass &inRowCol)
 // prints the attributes' values of rowIndex and colIndex
 void RowColumnClass::printRowCol()
 {
-  cout << "[" << rowIndex << ',' << colIndex << "]" << endl;
+  cout << "[" << rowIndex << ',' << colIndex << "]";
 }
 
