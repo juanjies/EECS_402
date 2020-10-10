@@ -252,7 +252,10 @@ ColorImageClass::ColorImageClass()
   {
     for (int j = 0; j < IMAGE_ROW; j++)
     {
-      image[i][j].setToBlack();
+      // image[i][j].setToBlack();
+      image[i][j].valRed = COLOR_RANGE_MIN;
+      image[i][j].valGreen = COLOR_RANGE_MIN;
+      image[i][j].valBlue = 50;
     }
   }
 }
@@ -362,7 +365,7 @@ int main()
   RowColumnClass testRowCol;
   RowColumnClass testRowColOther(111, 222);
   ColorImageClass testImage;
-  //ColorImageClass testImages[3];
+  ColorImageClass testImages[3];
 
   //Test some basic ColorClass operations...
   cout << "Initial: ";
