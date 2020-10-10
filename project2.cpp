@@ -245,9 +245,9 @@ class ColorImageClass
 // default ctor sets all pixels to black
 ColorImageClass::ColorImageClass()
 {
-  for (i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_COL; i++)
   {
-    for (j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_ROW; j++)
     {
       image[i][j].setToBlack();
     }
@@ -257,9 +257,9 @@ ColorImageClass::ColorImageClass()
 // initializes all image pixels to the input
 void ColorImageClass::initializeTo(ColorClass &inColor)
 {
-  for (i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_COL; i++)
   {
-    for (j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_ROW; j++)
     {
       image[i][j].setTo(inColor);
     }
@@ -272,10 +272,10 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg);
 {
   bool doClip = false;
 
-  for (i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_COL; i++)
   // does it matter to loop thro col or row first?
   {
-    for (j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_ROW; j++)
     {
       doClip = doClip || needClip(image[i][j].addColor(rhsImg[i][j]));
       clipColor(image[i][j].addColor(rhsImg[i][j]));
@@ -290,11 +290,11 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
 {
   bool doClip = false;
 
-  for (i = 0; i < IMAGE_COL; i++) 
+  for (int i = 0; i < IMAGE_COL; i++) 
   {
-    for (j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_ROW; j++)
     {
-      for (k = 0; i < (numImgsToAdd-1); k++)
+      for (int k = 0; i < (numImgsToAdd-1); k++)
       {
         doClip = doClip || 
                  needClip(imagesToAdd[k+1].addColor(imagesToAdd[k]));
@@ -341,9 +341,9 @@ bool ColorImageClass::getColorAtLocation(RowColumnClass &inRowCol, ColorClass &o
 // print the contents of the image
 void ColorImageClass::printImage()
 {
-  for (i = 0; i < IMAGE_COL; i++)
+  for (int i = 0; i < IMAGE_COL; i++)
   {
-    for (j = 0; j < IMAGE_ROW; j++)
+    for (int j = 0; j < IMAGE_ROW; j++)
     {
       cout << "R: " << image[i][j].inRed << " "
            << "G: " << image[i][j].inGreen << " "
