@@ -207,7 +207,7 @@ void ColorClass::printComponentValues()
 {
   cout << "R: " << valRed   << " "
        << "G: " << valGreen << " "
-       << "B: " << valBlue  << endl; 
+       << "B: " << valBlue;
 }
 
 class RowColumnClass
