@@ -274,7 +274,6 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
   bool doClip = false;
 
   for (int i = 0; i < IMAGE_ROW; i++)
-  // does it matter to loop thro col or row first?
   {
     for (int j = 0; j < IMAGE_COL; j++)
     {
@@ -297,8 +296,7 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       for (int k = 0; k < (numImgsToAdd-1); k++)
       {
         doClip = (doClip || 
-                 imagesToAdd[k+1].image[i][j].
-                   addColor(imagesToAdd[k].image[i][j]) );
+                 imagesToAdd[k+1].addImageTo(imagesToAdd[k]) );
       }
       image[i][j].setTo(imagesToAdd[numImgsToAdd-1].image[i][j]);
     }
