@@ -289,6 +289,21 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
 {
   bool doClip = false;
 
+  for (int k = 1; k < numImgsToAdd; k++)
+  {
+    doClip = (doClip || 
+              imagesToAdd[k].addImageTo(imagesToAdd[k-1]) );
+  }
+  
+  for (int i = 0; i < IMAGE_ROW; i++)
+  {
+    for (int j = 0; j < IMAGE_COL; j++)
+    {
+      image[i][j].setTo(imagesToAdd[numImgsToAdd-1].image[i][j]);
+    }
+  }
+
+  /*
   for (int k = numImgsToAdd-1; k > 0; k--)
   {
     doClip = (doClip || 
@@ -302,6 +317,7 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       image[i][j].setTo(imagesToAdd[0].image[i][j]);
     }
   }
+  */
   return doClip;
 }
 
