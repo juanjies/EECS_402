@@ -298,8 +298,9 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       {
         doClip = doClip || 
                  needClip(imagesToAdd[k+1].image[i][j].
-                   addColor(imagesToAdd[k]);
-        clipColor(imagesToAdd[k+1].image[i][j].addColor(imagesToAdd[k]);
+                   addColor(imagesToAdd[k].image[i][j]);
+        clipColor(imagesToAdd[k+1].image[i][j]
+          .addColor(imagesToAdd[k].image[i][j]);
       }
       image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
     }
@@ -346,9 +347,7 @@ void ColorImageClass::printImage()
   {
     for (int j = 0; j < IMAGE_ROW; j++)
     {
-      cout << "R: " << image[i][j].inRed << " "
-           << "G: " << image[i][j].inGreen << " "
-           << "B: " << image[i][j].inBlue << "--";
+      cout << image[i][j].printComponentValues() << "--";
     }
     cout << endl;
   }
