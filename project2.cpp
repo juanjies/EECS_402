@@ -362,7 +362,7 @@ int main()
   RowColumnClass testRowCol;
   RowColumnClass testRowColOther(111, 222);
   ColorImageClass testImage;
-  ColorImageClass testImages[3];
+  //ColorImageClass testImages[3];
 
   //Test some basic ColorClass operations...
   cout << "Initial: ";
