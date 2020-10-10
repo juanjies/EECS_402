@@ -136,9 +136,9 @@ bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
   valGreen = clipColor(inGreen);
   valBlue = clipColor(inBlue);
   
-  return (needClip(inputRed) 
-          || needClip(inputGreen)
-          || needClip(inputBlue));
+  return (needClip(inRed) 
+          || needClip(inGreen)
+          || needClip(inBlue));
 }
 
 // set the color as the same as that in the input object
@@ -181,9 +181,9 @@ bool ColorClass::subtractColor(ColorClass &rhs)
            || needClip(valGreen - rhs.valGreen)
            || needClip(valBlue - rhs.valBlue);
 
-  inRed = clipColor(valRed - rhs.valRed);
-  inGreen = clipColor(valGreen - rhs.valGreen);
-  inBlue = clipColor(valBlue - rhs.valBlue);
+  valRed = clipColor(valRed - rhs.valRed);
+  valGreen = clipColor(valGreen - rhs.valGreen);
+  valBlue = clipColor(valBlue - rhs.valBlue);
   return doClip;
 }
 
