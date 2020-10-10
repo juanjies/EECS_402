@@ -347,7 +347,7 @@ void ColorImageClass::printImage()
   {
     for (int j = 0; j < IMAGE_COL; j++)
     {
-      image[i][j].printComponentValues()
+      image[i][j].printComponentValues();
       cout << "--";
     }
     cout << endl;
