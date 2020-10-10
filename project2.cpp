@@ -13,7 +13,6 @@ const int IMAGE_ROW = 10;
 const int IMAGE_COL = 18;
 
 bool needClip(int inColor); // global func
-// warning UNDEFINED REFERENCE 
 int  clipColor(int inColor);
 
 class ColorClass
@@ -25,6 +24,7 @@ class ColorClass
 
   public:
     ColorClass();
+    ColorClass(int inRed, int inGreen, int inBlue);
     // ~ColorClass(); // do we need to have destructors?
     void setToBlack();
     void setToRed();
@@ -48,6 +48,15 @@ ColorClass::ColorClass()
   inBlue = COLOR_RANGE_MAX;
 }
 
+// value ctor to set RGB to the input values
+ColorClass::ColorClass(int inputRed, int inputGreen, int inputBlue)
+// Q: if the input parameters' are inRed, inGreen, inBlue
+//    would they have conflict? (attributes & inputs)
+{
+  inRed = clipColor(inputRed);
+  inGreen = clipColor(inputGreen);
+  inBlue = clipColor(inputBlue);
+}
 // set color to black
 void ColorClass::setToBlack()
 {
@@ -127,16 +136,16 @@ int clipColor(int inColor)
 // set RGB as the input values
 // if any of input values need to be clipped
 // return true
-bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
+bool ColorClass::setTo(int inputRed, int inputGreen, int inputBlue)
 { 
 // Q: wouldn't input inRed have conflict with the attribute inRed?
-  inRed = clipColor(inRed);
-  inGreen = clipColor(inGreen);
-  inBlue = clipColor(inBlue);
+  inRed = clipColor(inputRed);
+  inGreen = clipColor(inputGreen);
+  inBlue = clipColor(inputBlue);
   
-  return ((needClip(inRed) 
-          || needClip(inGreen)
-          || needClip(inBlue) ));
+  return (needClip(inputRed) 
+          || needClip(inputGreen)
+          || needClip(inputBlue));
 }
 
 // set the color as the same as that in the input object
