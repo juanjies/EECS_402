@@ -298,10 +298,10 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       {
         doClip = doClip || 
                  needClip(imagesToAdd[k+1].image[i][j].
-                   addColor(imagesToAdd[k]));
-        clipColor(imagesToAdd[k+1].image[i][j].addColor(imagesToAdd[k]));
+                   addColor(imagesToAdd[k]);
+        clipColor(imagesToAdd[k+1].image[i][j].addColor(imagesToAdd[k]);
       }
-      image[i][j].setTo(imagesToAdd[numImgsToAdd].[i][j]);
+      image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
     }
   }
   return doClip;
@@ -314,7 +314,7 @@ bool ColorImageClass::setColorAtLocation(RowColumnClass &inRowCol, ColorClass &i
 {
   if (inRowCol.getRow() < IMAGE_ROW && inRowCol.getCol() < IMAGE_COL)
   {
-    image.setTo(inColor);
+    image[inRowCol.getRow()][inRowCol.getCol()].setTo(inColor);
     return true;
   }
   else
@@ -330,7 +330,7 @@ bool ColorImageClass::getColorAtLocation(RowColumnClass &inRowCol, ColorClass &o
 {
   if (inRowCol.getRow() < IMAGE_ROW && inRowCol.getCol() < IMAGE_COL)
   {
-    outColor.setTo(image[inRowCol.getRow()][inRowCol.getCol()])
+    outColor.setTo(image[inRowCol.getRow()][inRowCol.getCol()]);
     return true;
   }
   else
