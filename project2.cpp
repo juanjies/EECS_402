@@ -7,30 +7,27 @@ using namespace std;
 
 const int COLOR_RANGE_MAX = 1000;
 const int COLOR_RANGE_MIN = 0;
-const int DEF_ROW_COL_VALUE = -99999; // Q: should it be a const? >> global const
-  // where should I declear global const?
+const int DEF_ROW_COL_VALUE = -99999; 
 const int IMAGE_ROW = 10;
 const int IMAGE_COL = 18;
-
-bool needClip(int inColor); // global func
-int  clipColor(int inColor);
 
 class ColorClass
 {
   private:
-    int inRed;
-    int inGreen;
-    int inBlue;
+    int valRed;
+    int valGreen;
+    int valBlue;
 
   public:
     ColorClass();
     ColorClass(int inRed, int inGreen, int inBlue);
-    // ~ColorClass(); // do we need to have destructors?
     void setToBlack();
     void setToRed();
     void setToGreen();
     void setToBlue();
     void setToWhite();
+    bool needClip(int inColor);
+    int  clipColor(int inColor);
     bool setTo(int inRed, int inGreen, int inBlue);
     bool setTo(ColorClass &inColor); 
     bool addColor(ColorClass &rhs);
@@ -40,66 +37,63 @@ class ColorClass
 };
 
 // default constructor to set RGB to the max range
-// Q: the order of class prototpye, main func, scope resolution
 ColorClass::ColorClass() 
 {
-  inRed = COLOR_RANGE_MAX;
-  inGreen = COLOR_RANGE_MAX;
-  inBlue = COLOR_RANGE_MAX;
+  valRed = COLOR_RANGE_MAX;
+  valGreen = COLOR_RANGE_MAX;
+  valBlue = COLOR_RANGE_MAX;
 }
 
 // value ctor to set RGB to the input values
-ColorClass::ColorClass(int inputRed, int inputGreen, int inputBlue)
-// Q: if the input parameters' are inRed, inGreen, inBlue
-//    would they have conflict? (attributes & inputs)
+ColorClass::ColorClass(int inRed, int inGreen, int inBlue)
 {
-  inRed = clipColor(inputRed);
-  inGreen = clipColor(inputGreen);
-  inBlue = clipColor(inputBlue);
+  valRed = clipColor(inRed);
+  valGreen = clipColor(inGreen);
+  valBlue = clipColor(inBlue);
 }
 // set color to black
 void ColorClass::setToBlack()
 {
-  inRed = COLOR_RANGE_MIN;
-  inGreen = COLOR_RANGE_MIN;
-  inBlue = COLOR_RANGE_MIN;
+  valRed = COLOR_RANGE_MIN;
+  valGreen = COLOR_RANGE_MIN;
+  valBlue = COLOR_RANGE_MIN;
 }
 
 // set color to red
 void ColorClass::setToRed()
 {
-  inRed = COLOR_RANGE_MAX;
-  inGreen = COLOR_RANGE_MIN;
-  inBlue = COLOR_RANGE_MIN;
+  valRed = COLOR_RANGE_MAX;
+  valGreen = COLOR_RANGE_MIN;
+  valBlue = COLOR_RANGE_MIN;
 }
 
 // set color to green
 void ColorClass::setToGreen()
 {
-  inRed = COLOR_RANGE_MIN;
-  inGreen = COLOR_RANGE_MAX;
-  inBlue = COLOR_RANGE_MIN;
+  valRed = COLOR_RANGE_MIN;
+  valGreen = COLOR_RANGE_MAX;
+  valBlue = COLOR_RANGE_MIN;
 }
 
 // set color to blue
 void ColorClass::setToBlue()
 {
-  inRed = COLOR_RANGE_MIN;
-  inGreen = COLOR_RANGE_MIN;
-  inBlue = COLOR_RANGE_MAX;
+  valRed = COLOR_RANGE_MIN;
+  valGreen = COLOR_RANGE_MIN;
+  valBlue = COLOR_RANGE_MAX;
 }
 
 // set color to white
 void ColorClass::setToWhite()
 {
-  inRed = COLOR_RANGE_MAX;
-  inGreen = COLOR_RANGE_MAX;
-  inBlue = COLOR_RANGE_MAX;
+  valRed = COLOR_RANGE_MAX;
+  valGreen = COLOR_RANGE_MAX;
+  valBlue = COLOR_RANGE_MAX;
 }
 
 // check if clipping is necessary for the input color index
 // reture true for necessary
-bool needClip(int inColor)
+bool ColorClass::needClip(int inColor)
 {
   if (inColor > COLOR_RANGE_MAX)
   {
@@ -116,7 +110,7 @@ bool needClip(int inColor)
 }
 
 // clip the input color 
-int clipColor(int inColor)
+int ColorClass::clipColor(int inColor)
 {
   if (inColor < COLOR_RANGE_MIN)
   {
@@ -136,12 +130,11 @@ int clipColor(int inColor)
 // set RGB as the input values
 // if any of input values need to be clipped
 // return true
-bool ColorClass::setTo(int inputRed, int inputGreen, int inputBlue)
+bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
 { 
-// Q: wouldn't input inRed have conflict with the attribute inRed?
-  inRed = clipColor(inputRed);
-  inGreen = clipColor(inputGreen);
-  inBlue = clipColor(inputBlue);
+  valRed = clipColor(inRed);
+  valGreen = clipColor(inGreen);
+  valBlue = clipColor(inBlue);
   
   return (needClip(inputRed) 
           || needClip(inputGreen)
@@ -153,13 +146,13 @@ bool ColorClass::setTo(int inputRed, int inputGreen, int inputBlue)
 // return true
 bool ColorClass::setTo(ColorClass &inColor)
 {
-  inRed = clipColor(inColor.inRed);
-  inGreen = clipColor(inColor.inGreen);
-  inBlue = clipColor(inColor.inBlue);
+  valRed = clipColor(inColor.valRed);
+  valGreen = clipColor(inColor.valGreen);
+  valBlue = clipColor(inColor.valBlue);
 
-  return ((needClip(inColor.inRed) 
-          || needClip(inColor.inGreen)
-          || needClip(inColor.inBlue)));
+  return ((needClip(inColor.valRed) 
+          || needClip(inColor.valGreen)
+          || needClip(inColor.valBlue)));
 }
 
 // add the color values of the input object 
@@ -168,13 +161,13 @@ bool ColorClass::setTo(ColorClass &inColor)
 bool ColorClass::addColor(ColorClass &rhs)
 {
   bool doClip = false;
-  doClip = needClip(inRed + rhs.inRed)
-           || needClip(inGreen + rhs.inGreen)
-           || needClip(inBlue + rhs.inBlue);
+  doClip = needClip(valRed + rhs.valRed)
+           || needClip(valGreen + rhs.valGreen)
+           || needClip(valBlue + rhs.valBlue);
 
-  inRed = clipColor(inRed + rhs.inRed);
-  inGreen = clipColor(inGreen + rhs.inGreen);
-  inBlue = clipColor(inBlue + rhs.inBlue);
+  valRed = clipColor(valRed + rhs.valRed);
+  valGreen = clipColor(valGreen + rhs.valGreen);
+  valBlue = clipColor(valBlue + rhs.valBlue);
   return doClip;
 }
 
@@ -184,13 +177,13 @@ bool ColorClass::addColor(ColorClass &rhs)
 bool ColorClass::subtractColor(ColorClass &rhs)
 {
   bool doClip = false;
-  doClip = needClip(inRed - rhs.inRed)
-           || needClip(inGreen - rhs.inGreen)
-           || needClip(inBlue - rhs.inBlue);
+  doClip = needClip(valRed - rhs.valRed)
+           || needClip(valGreen - rhs.valGreen)
+           || needClip(valBlue - rhs.valBlue);
 
-  inRed = clipColor(inRed - rhs.inRed);
-  inGreen = clipColor(inGreen - rhs.inGreen);
-  inBlue = clipColor(inBlue - rhs.inBlue);
+  inRed = clipColor(valRed - rhs.valRed);
+  inGreen = clipColor(valGreen - rhs.valGreen);
+  inBlue = clipColor(valBlue - rhs.valBlue);
   return doClip;
 }
 
@@ -199,22 +192,22 @@ bool ColorClass::subtractColor(ColorClass &rhs)
 bool ColorClass::adjustBrightness(double adjFactor)
 {
   bool doClip = false;
-  doClip = needClip(inRed * adjFactor)
-           || needClip(inGreen * adjFactor)
-           || needClip(inBlue * adjFactor);
+  doClip = needClip(valRed * adjFactor)
+           || needClip(valGreen * adjFactor)
+           || needClip(valBlue * adjFactor);
 
-  inRed = clipColor(static_cast< int >(inRed * adjFactor) );
-  inGreen = clipColor(static_cast< int >(inGreen * adjFactor) );
-  inBlue = clipColor(static_cast< int >(inBlue * adjFactor) );
+  valRed = clipColor(static_cast< int >(valRed * adjFactor) );
+  valGreen = clipColor(static_cast< int >(valGreen * adjFactor) );
+  valBlue = clipColor(static_cast< int >(valBlue * adjFactor) );
   return doClip;
 }
 
 // print out value as "R:<> G:<> B:<>"
 void ColorClass::printComponentValues()
 {
-  cout << "R: " << inRed   << " "
-       << "G: " << inGreen << " "
-       << "B: " << inBlue  << endl; 
+  cout << "R: " << valRed   << " "
+       << "G: " << valGreen << " "
+       << "B: " << valBlue  << endl; 
 }
 
 class RowColumnClass
@@ -287,8 +280,7 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
   {
     for (int j = 0; j < IMAGE_ROW; j++)
     {
-      doClip = doClip || needClip(image[i][j].addColor(rhsImg.image[i][j]));
-      clipColor(image[i][j].addColor(rhsImg.image[i][j]));
+      doClip = doClip || image[i][j].addColor(rhsImg.image[i][j]);
     }
   }
   return doClip;
@@ -307,10 +299,8 @@ bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd []
       for (int k = 0; i < (numImgsToAdd-1); k++)
       {
         doClip = doClip || 
-                 needClip(imagesToAdd[k+1].image[i][j].
-                   addColor(imagesToAdd[k].image[i][j]));
-        clipColor(imagesToAdd[k+1].image[i][j]
-          .addColor(imagesToAdd[k].image[i][j]));
+                 imagesToAdd[k+1].image[i][j].
+                   addColor(imagesToAdd[k].image[i][j]);
       }
       image[i][j].setTo(imagesToAdd[numImgsToAdd].image[i][j]);
     }
@@ -368,7 +358,7 @@ void ColorImageClass::printImage()
 //  used to test the created classes. 
 int main()
 {
-  ColorClass testColor(100, 100, 100);
+  ColorClass testColor;
   RowColumnClass testRowCol;
   RowColumnClass testRowColOther(111, 222);
   ColorImageClass testImage;
