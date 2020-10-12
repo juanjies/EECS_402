@@ -360,8 +360,15 @@ void ColorImageClass::printImage()
   {
     for (int j = 0; j < IMAGE_COL; j++)
     {
-      image[i][j].printComponentValues();
+      if (j == (IMAGE_COL-1))
+      {
+        image[i][j].printComponentValues();
+      }
+      else
+      {
+        image[i][j].printComponentValues();
       cout << "--";
+      }
     }
     cout << endl;
   }
