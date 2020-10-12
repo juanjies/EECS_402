@@ -277,7 +277,7 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
   {
     for (int j = 0; j < IMAGE_COL; j++)
     {
-      doClip = doClip || image[i][j].addColor(rhsImg.image[i][j]);
+      doClip = image[i][j].addColor(rhsImg.image[i][j]) || doClip;
     }
   }
   return doClip;
