@@ -69,6 +69,10 @@ class ColorImageClass
     void printImage();
 };
 
+//  Special testing requirement
+#ifdef ANDREW_TEST
+#include "andrewTest.h"
+#else
 //  Main func is not required in this project but
 //  used to test the created classes. 
 //  Here is the sample test main from Prof. Morgan
@@ -218,6 +222,7 @@ int main()
 
   return 0;
 }
+#else
 
 // Here starts the method implementations of "ColorClass"
 
