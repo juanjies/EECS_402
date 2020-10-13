@@ -501,17 +501,18 @@ bool ColorImageClass::addImageTo(ColorImageClass &rhsImg)
   return doClip;
 }
 
-// set the image values to be the sum of the corresponding 
-// pixels in each image in the imagesToAdd input
+// set the image values to be the sum of the all images input
 bool ColorImageClass::addImages(int numImgsToAdd, ColorImageClass imagesToAdd [])
 {
   bool doClip = false;
-
+  // add image[k] to image [k+1] and loop through all images
+  // so that the last image would be the sum of all images
   for (int k = 0; k < (numImgsToAdd-1); k++)
   {
     doClip = (imagesToAdd[k+1].addImageTo(imagesToAdd[k]) || doClip);
   }
-  
+
+  // set the current image to that last image
   for (int i = 0; i < IMAGE_ROW; i++)
   {
     for (int j = 0; j < IMAGE_COL; j++)
