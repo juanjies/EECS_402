@@ -222,7 +222,7 @@ int main()
 
   return 0;
 }
-#else
+#endif
 
 // Here starts the method implementations of "ColorClass"
 
