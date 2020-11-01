@@ -17,8 +17,9 @@ int main ()  {
   
   inFile.open("fileName.c_str()"); 
   
-  inFile >> magicNum;
-  cout << "Magic Number is: " << "magicNum.c_str()" << endl;
+  // inFile >> magicNum;
+  cin >> magicNum;
+  cout << "Magic Number is: " << magicNum << endl;
   inFile >> imageWid;
   inFile >> imageLen;
   cout << "Image width = " << imageWid << endl;
