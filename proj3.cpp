@@ -23,7 +23,7 @@ int main ()  {
   
   if (inFile.fail())  {
 		cout << "Unable to open input file!" << endl;
-    exit;
+    exit(1);
 	}
 	
   while (!isValidInput)  {
