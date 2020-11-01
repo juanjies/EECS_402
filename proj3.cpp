@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
