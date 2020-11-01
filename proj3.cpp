@@ -17,8 +17,8 @@ int main ()  {
   bool isValidInput = false;
 
   cout << "Enter string for PPM image file name to load: " << endl;
-  cin >> fileName;
-  
+  // cin >> fileName;
+  fileName = "deerNoMagicNum.txt";
   inFile.open("fileName.c_str()"); 
   
   if (inFile.fail())  {
