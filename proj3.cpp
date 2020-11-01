@@ -17,12 +17,11 @@ int main ()  {
   
   inFile.open("fileName.c_str()"); 
   
-  // inFile >> magicNum;
-  cin >> magicNum;
+  inFile >> magicNum;
   cout << "Magic Number is: " << magicNum << endl;
   inFile >> imageWid;
   inFile >> imageLen;
-  cout << "Image width = " << imageWid << endl;
+  cout << "Image Width = " << imageWid << endl;
   cout << "Image Length = " << imageLen << endl;
 
   inFile.close();
