@@ -9,7 +9,8 @@ using namespace std;
 int main ()  {
   string fileName;
   ifstream inFile;
-  string magicNum, imageWid, imageLen; // temp
+  string magicNum; // temp
+  int imageWid, imageLen; // temp
 
   cout << "Enter string for PPM image file name to load: " << endl;
   cin >> fileName;
