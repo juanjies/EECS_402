@@ -10,7 +10,7 @@ int main ()  {
   string fileName;
   ifstream inFile;
   string magicNum; // temp
-  int imageWid, imageLen; // temp
+  int imageWid = 0, imageLen = 0; // temp
 
   cout << "Enter string for PPM image file name to load: " << endl;
   cin >> fileName;
