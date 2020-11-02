@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include "constants.h"
+#include "ColorClass.h"
+
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
@@ -15,6 +18,7 @@ int main ()  {
   string magicNum; // temp
   int imageWid = 0, imageLen = 0; // temp
   bool isValidInput = false;
+  ColorImageClass *ptrImage = NULL;
 
   cout << "Enter string for PPM image file name to load: " << endl;
   // cin >> fileName;
@@ -27,11 +31,6 @@ int main ()  {
 	}
 	
   while (!isValidInput)  {
-        
-    // inFile >> magicNum;
-    // cout << "Magic Number is: " << magicNum << endl;
-    inFile >> imageWid;
-    inFile >> imageLen;
 
     if (inFile.eof())  {
 			cout << "EOF before reading the image" << endl;
@@ -44,12 +43,39 @@ int main ()  {
     else  {
       isValidInput = true;
     }
-		
-    cout << "Image Width = " << imageWid << endl;
-    cout << "Image Length = " << imageLen << endl;
-	}
+    
+  }
+  // inFile >> magicNum;
+  // cout << "Magic Number is: " << magicNum << endl;
+    inFile >> imageWid;
+    inFile >> imageLen;
+  cout << "Image Width = " << imageWid << endl;
+  cout << "Image Length = " << imageLen << endl;
 
   inFile.close();
-  
   return 0;
 }
+
+/*
+// temp ideas
+
+// create a Dynamic 2D array
+// Allocation    
+ColorClass **pixelMatrix;  
+pixelMatrix = new ColorClass*[imageLen];
+for (int rInd = 0; rInd < imageLen; rInd++)  {
+  pixelMatrix[rInd] = new ColorClass[imageWid];
+}
+
+for (int rInd = 0; rInd < imageLen; rInd++)  {
+  for (int cInd = 0; cInd < imageWid; cInd++)  {
+    // assign three R G B values as a pixel
+    // pixelMatrix[rInd][cInd] = ColorClass(inRed, inGreen, inBlue); 
+  }
+}
+// Deletion
+for (int rInd = 0; rInd < imageLen; rInd++)  {
+  delete [] pixelMatrix[rInd];
+}
+delete [] pixelMatrix;
+*/
