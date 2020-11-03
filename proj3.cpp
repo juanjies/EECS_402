@@ -15,10 +15,12 @@ const int igoredCharLen = 300;
 int main ()  {
   string fileName;
   ifstream inFile;
+  ofstream outFile;
   string magicNum; // temp
-  int imageWid = 0, imageLen = 0; // temp
+  int imageWid = 0, imageLen = 0, maxColorValue = 0; // temp
+  int inRed = 0, inGreen = 0, inBlue = 0;
   bool isValidInput = false;
-
+  
   cout << "Enter string for PPM image file name to load: " << endl;
   cin >> fileName;
   inFile.open(fileName.c_str()); 
@@ -49,11 +51,32 @@ int main ()  {
 
   inFile >> imageWid;
   inFile >> imageLen;
+  inFile >> maxColorValue;
   cout << "Image Width = " << imageWid << endl;
   cout << "Image Length = " << imageLen << endl;
+  cout << "Max color value = " << maxColorValue << endl;
 
-  inFile.close();
-  return 0;
+  // create a Dynamic 2D array
+  // Allocation    
+  ColorClass **pixelMatrix;  
+
+  pixelMatrix = new ColorClass*[imageLen];
+  for (int rInd = 0; rInd < imageLen; rInd++)  {
+    pixelMatrix[rInd] = new ColorClass[imageWid];
+  }
+
+  for (int rInd = 0; rInd < imageLen; rInd++)  {
+    for (int cInd = 0; cInd < imageWid; cInd++)  {
+      // assign three R G B values as a pixel
+      inFile >> inRed >> inGreen >> inBlue;
+      pixelMatrix[rInd][cInd] = ColorClass(inRed, inGreen, inBlue); 
+    }
+  }
+  // Deletion
+  for (int rInd = 0; rInd < imageLen; rInd++)  {
+    delete [] pixelMatrix[rInd];
+  }
+  delete [] pixelMatrix;
 }
 
 /*
