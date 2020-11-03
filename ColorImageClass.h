@@ -3,11 +3,11 @@
 
 class ColorImageClass  {
   private:
-    ColorClass image[IMAGE_ROW][IMAGE_COL];
+    ColorClass image[][];
 
   public:
-    // default ctor sets all pixels to black
-    ColorImageClass();
+    // value ctor sets all pixels to black
+    ColorImageClass(int imageLen, int imageWid);
     // initializes all image pixels to the input
     void initializeTo(ColorClass &inColor);
     // pixel-wise addition of color index

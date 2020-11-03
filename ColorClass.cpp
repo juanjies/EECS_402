@@ -1,3 +1,6 @@
+// Programmer: Juan-Jie Sun
+// Date: November 2020
+// Purpose: Provide the inplementations for ctor and method in ColorClass
 
 ColorClass::ColorClass() 
 {

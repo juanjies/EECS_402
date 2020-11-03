@@ -1,6 +1,6 @@
-ColorImageClass::ColorImageClass()  {
-  for (int i = 0; i < IMAGE_ROW; i++)  {
-    for (int j = 0; j < IMAGE_COL; j++)  {
+ColorImageClass::ColorImageClass(int imageLen, int imageWid)  {
+  for (int i = 0; i < imageLen; i++)  {
+    for (int j = 0; j < imageWid; j++)  {
       image[i][j].setToBlack();
     }
   }

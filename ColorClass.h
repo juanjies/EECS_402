@@ -1,6 +1,10 @@
 #ifndef _ColorClass_H_
 #define _ColorClass_H_
 
+// Programmer: Juan-Jie Sun
+// Date: November 2020
+// Purpose: Provide a ColorClass to process RGB values in a single pixel 
+
 class ColorClass  {
   private:
     int valRed;
