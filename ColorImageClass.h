@@ -2,6 +2,7 @@
 #define _ColorImageClass_H_
 
 #include "ColorClass.h"
+#include "RowColumnClass.h"
 
 class ColorImageClass  {
   private:

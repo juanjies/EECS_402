@@ -1,6 +1,9 @@
 ColorClass.o: ColorClass.cpp ColorClass.h
 '\t'  g++ -c ColorClass.cpp -o ColorClass.o
 
+RowColumnClass.o: RowColumnClass.cpp RowColumnClass.h
+'\t'  g++ -c RowColumnClass.cpp -o RowColumnClass.o
+
 ColorImageClass.o: ColorImageClass.cpp ColorImageClass.h
 '\t'  g++ -c ColorImageClass.cpp -o ColorImageClass.o
 

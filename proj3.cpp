@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include "constants.h"
 #include "ColorClass.h"
+#include "ColorImageClass.h"
+#include "RowColumnClass.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -17,8 +19,12 @@ int main ()  {
   ifstream inFile;
   ofstream outFile;
   string magicNum; // temp
+  ColorClass tempPixel;
+  ColorImageClass *iImage;
+  RowColumnClass tempLocation;
+
   int imageWid = 0, imageLen = 0, maxColorValue = 0; // temp
-  int inRed = 0, inGreen = 0, inBlue = 0;
+  int tempRed = 0, tempGreen = 0, tempBlue = 0;
   bool isValidInput = false;
   
   cout << "Enter string for PPM image file name to load: " << endl;
@@ -56,27 +62,19 @@ int main ()  {
   cout << "Image Length = " << imageLen << endl;
   cout << "Max color value = " << maxColorValue << endl;
 
-  // create a Dynamic 2D array
-  // Allocation    
-  ColorClass **pixelMatrix;  
-
-  pixelMatrix = new ColorClass*[imageLen];
-  for (int rInd = 0; rInd < imageLen; rInd++)  {
-    pixelMatrix[rInd] = new ColorClass[imageWid];
-  }
-
+  iImage = new ColorImageClass(imageLen,imageWid);
+  
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
-      // assign three R G B values as a pixel
-      inFile >> inRed >> inGreen >> inBlue;
-      pixelMatrix[rInd][cInd] = ColorClass(inRed, inGreen, inBlue); 
+      tempLocation.setRowCol(rInd, cInd);
+      inFile >> tempRed;
+      inFile >> tempGreen;
+      inFile >> tempBlue;
+      tempPixel.setTo(tempRed, tempGreen, tempBlue);
+      iImage -> setColorAtLocation(tempLocation, tempPixel);
     }
   }
-  // Deletion
-  for (int rInd = 0; rInd < imageLen; rInd++)  {
-    delete [] pixelMatrix[rInd];
-  }
-  delete [] pixelMatrix;
+  iImage -> printImage;
 }
 
 /*
