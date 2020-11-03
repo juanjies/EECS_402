@@ -1,5 +1,5 @@
 
-int showMenu();
+void showMenu();
 
 void showMenu()  {
   int mainMenuOpt = 0, recMethod = 0, recColor = 0, recFillOpt = 0;

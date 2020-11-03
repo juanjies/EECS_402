@@ -1,6 +1,8 @@
 #ifndef _ColorImageClass_H_
 #define _ColorImageClass_H_
 
+#include "ColorClass.h"
+
 class ColorImageClass  {
   private:
     ColorClass image[][];
