@@ -11,7 +11,6 @@ using namespace std;
 // Date: November 2020
 // Purpose: EECS402 Project 3 - Use dynamic allocation to implement image
 //          editing with a UNIX Makefile to link multiple .h and .cpp files. 
-
 const int igoredCharLen = 300;
 
 int main ()  {
