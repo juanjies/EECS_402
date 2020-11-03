@@ -20,9 +20,8 @@ int main ()  {
   bool isValidInput = false;
 
   cout << "Enter string for PPM image file name to load: " << endl;
-  // cin >> fileName;
-  fileName = "deerNoMagicNum.txt";
-  inFile.open("fileName.c_str()"); 
+  cin >> fileName;
+  inFile.open(fileName.c_str()); 
   
   if (inFile.fail())  {
 		cout << "Unable to open input file!" << endl;
@@ -44,10 +43,12 @@ int main ()  {
     }
     
   }
-  // inFile >> magicNum;
-  // cout << "Magic Number is: " << magicNum << endl;
-    inFile >> imageWid;
-    inFile >> imageLen;
+
+  inFile >> magicNum;
+  cout << "Magic Number is: " << magicNum << endl;
+
+  inFile >> imageWid;
+  inFile >> imageLen;
   cout << "Image Width = " << imageWid << endl;
   cout << "Image Length = " << imageLen << endl;
 
