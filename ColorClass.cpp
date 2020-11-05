@@ -1,4 +1,6 @@
+#include <iostream>
 #include "ColorClass.h"
+#include "constants.h"
 
 // Programmer: Juan-Jie Sun
 // Date: November 2020
