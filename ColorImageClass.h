@@ -6,11 +6,15 @@
 
 class ColorImageClass  {
   private:
-    ColorClass image[][];
+    ColorClass **image;
+    int arrayLen, arrayWid;
 
   public:
+    // set up a 2D array
     // value ctor sets all pixels to black
     ColorImageClass(int imageLen, int imageWid);
+    // dtor: free the dynamic allocation 
+    ~ColorImageClass();
     // initializes all image pixels to the input
     void initializeTo(ColorClass &inColor);
     // pixel-wise addition of color index

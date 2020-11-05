@@ -19,7 +19,7 @@ int main ()  {
   ofstream outFile;
   string magicNum; // temp
   ColorClass tempPixel;
-  ColorImageClass *iImage;
+  ColorImageClass image;
   RowColumnClass tempLocation;
 
   int imageWid = 0, imageLen = 0, maxColorValue = 0; // temp
@@ -36,7 +36,6 @@ int main ()  {
 	}
 	
   while (!isValidInput)  {
-
     if (inFile.eof())  {
 			cout << "EOF before reading the image" << endl;
       exit(2);
@@ -48,7 +47,6 @@ int main ()  {
     else  {
       isValidInput = true;
     }
-    
   }
 
   inFile >> magicNum;
@@ -61,7 +59,7 @@ int main ()  {
   cout << "Image Length = " << imageLen << endl;
   cout << "Max color value = " << maxColorValue << endl;
 
-  iImage = new ColorImageClass(imageLen,imageWid);
+  image = ColorImageClass(imageLen,imageWid);
   
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
@@ -70,10 +68,10 @@ int main ()  {
       inFile >> tempGreen;
       inFile >> tempBlue;
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
-      iImage -> setColorAtLocation(tempLocation, tempPixel);
+      image.setColorAtLocation(tempLocation, tempPixel);
     }
   }
-  iImage -> printImage;
+  image.printImage();
 }
 
 /*
