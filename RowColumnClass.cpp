@@ -1,3 +1,6 @@
+#include "constants.h"
+#include "RowColumnClass.h"
+
 RowColumnClass::RowColumnClass()  {
   rowIndex = DEF_ROW_COL_VALUE;
   colIndex = DEF_ROW_COL_VALUE;

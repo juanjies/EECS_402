@@ -7,5 +7,5 @@
 
 const int COLOR_RANGE_MAX = 255;
 const int COLOR_RANGE_MIN = 0;
-
+const int DEF_ROW_COL_VALUE = -99999;
 #endif 
