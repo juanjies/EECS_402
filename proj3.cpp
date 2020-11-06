@@ -49,7 +49,7 @@ int main ()  {
       inFile >> imageLen;
       inFile >> maxColorValue;
 
-      if (magicNum != MAGIC_NUM_PPM)  {
+      if (magicNum == 0)  {
         cout << "The Magic Number of the input file is invalid." << endl;
       }
       else if (maxColorValue < COLOR_RANGE_MIN || 
