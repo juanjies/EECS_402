@@ -89,10 +89,10 @@ void ColorImageClass::printImage()  {
   for (int i = 0; i < arrayLen; i++)  {
     for (int j = 0; j < arrayWid; j++)  {
       if (j == (arrayLen-1)) {
-        image[i][j].printComponentValues(outFile);
+        image[i][j].printComponentValues();
       }
       else  {
-        image[i][j].printComponentValues(outFile);
+        image[i][j].printComponentValues();
       cout << "--";
       }
     }
