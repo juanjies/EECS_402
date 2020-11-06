@@ -1,6 +1,7 @@
 #ifndef _ColorClass_H_
 #define _ColorClass_H_
 #include <fstream>
+#include <iostream>
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: Provide a ColorClass to process RGB values in a single pixel 
@@ -50,7 +51,7 @@ class ColorClass  {
     bool adjustBrightness(double adjFactor);
     // print out value as "R:<> G:<> B:<>"
     void printComponentValues();
-    void printComponentValues(ofstream outFile);
+    void printComponentValues(ofstream &outFile);
 };
 
 #endif
