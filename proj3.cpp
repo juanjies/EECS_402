@@ -19,7 +19,6 @@ int main ()  {
   ofstream outFile;
   string magicNum; // temp
   ColorClass tempPixel;
-  ColorImageClass image;
   RowColumnClass tempLocation;
 
   int imageWid = 0, imageLen = 0, maxColorValue = 0; // temp
@@ -59,7 +58,7 @@ int main ()  {
   cout << "Image Length = " << imageLen << endl;
   cout << "Max color value = " << maxColorValue << endl;
 
-  image = ColorImageClass(imageLen,imageWid);
+  ColorImageClass image(imageLen, imageWid);
   
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
