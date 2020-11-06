@@ -49,7 +49,7 @@ class ColorClass  {
     // return true if there's any clipping
     bool adjustBrightness(double adjFactor);
     // print out value as "R:<> G:<> B:<>"
-    void printComponentValues();
+    void printComponentValues(ofstream outFile);
 };
 
 #endif
