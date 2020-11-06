@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "RowColumnClass.h"
 
+using namespace std;
 RowColumnClass::RowColumnClass()  {
   rowIndex = DEF_ROW_COL_VALUE;
   colIndex = DEF_ROW_COL_VALUE;
