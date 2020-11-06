@@ -4,7 +4,7 @@ ColorClass.o: ColorClass.cpp ColorClass.h
 RowColumnClass.o: RowColumnClass.cpp RowColumnClass.h
 	g++ -c RowColumnClass.cpp -o RowColumnClass.o
 
-ColorImageClass.o: ColorClass.h ColorImageClass.cpp ColorImageClass.h \
+ColorImageClass.o: ColorImageClass.cpp ColorClass.h ColorImageClass.h \
                    RowColumnClass.h
 	g++ -c ColorImageClass.cpp -o ColorImageClass.o
 
