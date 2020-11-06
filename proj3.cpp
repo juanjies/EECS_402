@@ -75,9 +75,12 @@ int main ()  {
       inFile >> tempBlue;
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       image.setColorAtLocation(tempLocation, tempPixel);
+      outFile << tempRed << " " << tempGreen << " " << tempBlue << " ";
     }
   }
   image.printImage();
+  inFile.close();
+  outFile.close();
 }
 
 /*

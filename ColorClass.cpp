@@ -151,9 +151,18 @@ bool ColorClass::adjustBrightness(double adjFactor)
   return doClip;
 }
 
+void ColorClass::printComponentValues()  {
+  cout << "R: " << valRed   << " "
+       << "G: " << valGreen << " "
+       << "B: " << valBlue;
+  outFile << valRed << " " << valGreen << " " << valBlue << " ";
+}
+
+/*
 void ColorClass::printComponentValues(ofstream outFile)  {
   cout << "R: " << valRed   << " "
        << "G: " << valGreen << " "
        << "B: " << valBlue;
   outFile << valRed << " " << valGreen << " " << valBlue << " ";
 }
+*/
