@@ -60,6 +60,11 @@ int main ()  {
 
   ColorImageClass image(imageLen, imageWid);
   
+  outFile.open("outputTest.txt");
+  outFile << magicNum << endl;
+  outFile << imageWid << " " << imageLen << endl;
+  outFile << maxColorValue << endl;
+
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
       tempLocation.setRowCol(rInd, cInd);
