@@ -1,3 +1,4 @@
+#include <iostream>
 #include "constants.h"
 #include "RowColumnClass.h"
 
