@@ -1,3 +1,6 @@
+#ifndef _RowColumnClass_H_
+#define _RowColumnClass_H_
+
 class RowColumnClass
 {
   private:
@@ -20,3 +23,5 @@ class RowColumnClass
     // prints the attributes' values of rowIndex and colIndex
     void printRowCol();
 };
+
+#endif
