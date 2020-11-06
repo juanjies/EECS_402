@@ -16,7 +16,8 @@ int main ()  {
   string fileName;
   ifstream inFile;
   ofstream outFile;
-  string magicNum; 
+  //string magicNum; 
+  char magicNum[MAGIC_NUM_LEN];
   ColorClass tempPixel;
   RowColumnClass tempLocation;
 
@@ -48,7 +49,7 @@ int main ()  {
       inFile >> imageLen;
       inFile >> maxColorValue;
 
-      if (magicNum.c_str() != MAGIC_NUM_PPM)  {
+      if (magicNum != MAGIC_NUM_PPM)  {
         cout << "The Magic Number of the input file is invalid." << endl;
       }
       else if (maxColorValue < COLOR_RANGE_MIN || 
