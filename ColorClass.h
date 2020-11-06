@@ -1,6 +1,5 @@
 #ifndef _ColorClass_H_
 #define _ColorClass_H_
-
 #include <fstream>
 // Programmer: Juan-Jie Sun
 // Date: November 2020

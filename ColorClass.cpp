@@ -2,8 +2,8 @@
 #include <fstream>
 #include "ColorClass.h"
 #include "constants.h"
-
 using namespace std;
+
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: Provide the inplementations for ctor and method in ColorClass
