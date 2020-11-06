@@ -43,16 +43,31 @@ int main ()  {
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
 		}
     else  {
-      isValidInput = true;
+      inFile >> magicNum;
+      inFile >> imageWid;
+      inFile >> imageLen;
+      inFile >> maxColorValue;
+
+      if (magicNum != MAGIC_NUM_PPM)  {
+        cout << "The Magic Number of the input file is invalid." << endl;
+      }
+      else if (maxColorValue < COLOR_RANGE_MIN || 
+               maxColorValue > COLOR_RANGE_MAX)  {
+        cout << "The maximum color value of the input file is invalid." 
+             << endl;
+      }
+      else if (imageWid < 0 || imageLen < 0)  {
+        cout << "The dimension of the input file is invalid." << endl;
+      }
+      else {
+        isValidInput = true;
+      }
+      
     }
   }
 
-  inFile >> magicNum;
+  
   cout << "Magic Number is: " << magicNum << endl;
-
-  inFile >> imageWid;
-  inFile >> imageLen;
-  inFile >> maxColorValue;
   cout << "Image Width = " << imageWid << endl;
   cout << "Image Length = " << imageLen << endl;
   cout << "Max color value = " << maxColorValue << endl;
@@ -82,27 +97,3 @@ int main ()  {
   inFile.close();
   outFile.close();
 }
-
-/*
-// temp ideas
-
-// create a Dynamic 2D array
-// Allocation    
-ColorClass **pixelMatrix;  
-pixelMatrix = new ColorClass*[imageLen];
-for (int rInd = 0; rInd < imageLen; rInd++)  {
-  pixelMatrix[rInd] = new ColorClass[imageWid];
-}
-
-for (int rInd = 0; rInd < imageLen; rInd++)  {
-  for (int cInd = 0; cInd < imageWid; cInd++)  {
-    // assign three R G B values as a pixel
-    // pixelMatrix[rInd][cInd] = ColorClass(inRed, inGreen, inBlue); 
-  }
-}
-// Deletion
-for (int rInd = 0; rInd < imageLen; rInd++)  {
-  delete [] pixelMatrix[rInd];
-}
-delete [] pixelMatrix;
-*/

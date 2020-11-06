@@ -2,6 +2,7 @@
 #define _ColorClass_H_
 #include <fstream>
 #include <iostream>
+
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020

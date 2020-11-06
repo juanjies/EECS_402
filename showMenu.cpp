@@ -1,10 +1,9 @@
+#include <iostream>
+#include "showMenu.h"
 
-void showMenu();
+using namespace std;
 
-void showMenu()  {
-  int mainMenuOpt = 0, recMethod = 0, recColor = 0, recFillOpt = 0;
-
-  while (mainMenuOpt !=5)  {
+int showMenu()  {
     cout << "1. Annotate image with rectangle" << '\n'
          << "2. Annotate image with pattern from file" << '\n'
          << "3. Insert another image" << '\n'
@@ -90,4 +89,9 @@ void showMenu()  {
   }
 }
 
-
+int showMenu(int optionNum)  {
+  if (optionNum == 1)  {
+    ;
+  }
+  else if (optionNum == 2)
+}
