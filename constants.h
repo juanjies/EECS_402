@@ -9,5 +9,6 @@ const int COLOR_RANGE_MAX = 255;
 const int COLOR_RANGE_MIN = 0;
 const int DEF_ROW_COL_VALUE = -99999;
 const int IGNORED_CHAR_LEN = 300;
-const string MAGIC_NUM_PPM = "P3";
+const int MAGIC_NUM_LEN = 3;
+const char MAGIC_NUM_PPM[MAGIC_NUM_LEN] = "P3";
 #endif 
