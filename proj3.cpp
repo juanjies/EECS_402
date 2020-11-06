@@ -11,13 +11,12 @@ using namespace std;
 // Date: November 2020
 // Purpose: EECS402 Project 3 - Use dynamic allocation to implement image
 //          editing with a UNIX Makefile to link multiple .h and .cpp files. 
-const int igoredCharLen = 300;
 
 int main ()  {
   string fileName;
   ifstream inFile;
   ofstream outFile;
-  string magicNum; // temp
+  string magicNum; 
   ColorClass tempPixel;
   RowColumnClass tempLocation;
 
@@ -33,7 +32,7 @@ int main ()  {
 		cout << "Unable to open input file!" << endl;
     exit(1);
 	}
-	
+	// file error checking
   while (!isValidInput)  {
     if (inFile.eof())  {
 			cout << "EOF before reading the image" << endl;
@@ -41,7 +40,7 @@ int main ()  {
 		}
 		else if (inFile.fail())  {
 			inFile.clear();
-      inFile.ignore(igoredCharLen, '\n');
+      inFile.ignore(IGNORED_CHAR_LEN, '\n');
 		}
     else  {
       isValidInput = true;
@@ -58,9 +57,12 @@ int main ()  {
   cout << "Image Length = " << imageLen << endl;
   cout << "Max color value = " << maxColorValue << endl;
 
+  cout << "Enter string for PPM file name to output: " << endl;
+  cin >> fileName;
+  outFile.open(fileName.c_str()); 
+
   ColorImageClass image(imageLen, imageWid);
   
-  outFile.open("outputTest.txt");
   outFile << magicNum << endl;
   outFile << imageWid << " " << imageLen << endl;
   outFile << maxColorValue << endl;

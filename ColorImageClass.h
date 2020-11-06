@@ -31,7 +31,7 @@ class ColorImageClass  {
     // return false if the location is not valid
     bool getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor);
     // print the contents of the image
-    void printImage();
+    void printImage(ofstream outFile);
 };
 
 #endif
