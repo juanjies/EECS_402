@@ -157,11 +157,9 @@ void ColorClass::printComponentValues()  {
        << "B: " << valBlue;
 }
 
-/*
 void ColorClass::printComponentValues(ofstream outFile)  {
   cout << "R: " << valRed   << " "
        << "G: " << valGreen << " "
        << "B: " << valBlue;
   outFile << valRed << " " << valGreen << " " << valBlue << " ";
 }
-*/
