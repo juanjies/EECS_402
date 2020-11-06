@@ -1,5 +1,7 @@
+#include <iostream>
 #include "ColorImageClass.h"
 
+using namespace std;
 ColorImageClass::ColorImageClass(int imageLen, int imageWid)  {
   arrayLen = imageLen;
   arrayWid = imageWid;
@@ -25,7 +27,7 @@ ColorImageClass::~ColorImageClass()  {
 
 void ColorImageClass::initializeTo(ColorClass &inColor)  {
   for (int i = 0; i < arrayLen; i++)  {
-    for (int j = 0; j < ; j++)  {
+    for (int j = 0; j < arrayLen ; j++)  {
       image[i][j].setTo(inColor);
     }
   }
