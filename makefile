@@ -1,3 +1,5 @@
+all: proj3.exe
+
 ColorClass.o: ColorClass.cpp ColorClass.h
 	g++ -c ColorClass.cpp -o ColorClass.o
 
