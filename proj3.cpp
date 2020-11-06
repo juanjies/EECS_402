@@ -92,6 +92,7 @@ int main ()  {
       image.setColorAtLocation(tempLocation, tempPixel);
       outFile << tempRed << " " << tempGreen << " " << tempBlue << " ";
     }
+    outFile << '\n';
   }
   image.printImage();
   inFile.close();
