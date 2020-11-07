@@ -85,7 +85,7 @@ bool ColorImageClass::getColorAtLocation(
   }
 }
 
-void ColorImageClass::printImage(ofstream outFile)  {
+void ColorImageClass::printImage(ofstream &outFile)  {
   for (int i = 0; i < arrayLen; i++)  {
     for (int j = 0; j < arrayWid; j++)  {
       if (j == (arrayLen-1)) {
