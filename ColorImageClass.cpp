@@ -85,14 +85,14 @@ bool ColorImageClass::getColorAtLocation(
   }
 }
 
-void ColorImageClass::printImage()  {
+void ColorImageClass::printImage(ofstream outFile)  {
   for (int i = 0; i < arrayLen; i++)  {
     for (int j = 0; j < arrayWid; j++)  {
       if (j == (arrayLen-1)) {
-        image[i][j].printComponentValues();
+        image[i][j].printComponentValues(outFile);
       }
       else  {
-        image[i][j].printComponentValues();
+        image[i][j].printComponentValues(outFile);
       cout << "--";
       }
     }
