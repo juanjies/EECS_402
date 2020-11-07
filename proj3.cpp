@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string.h>
 #include "constants.h"
 #include "ColorClass.h"
 #include "ColorImageClass.h"
