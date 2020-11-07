@@ -16,8 +16,7 @@ int main ()  {
   string fileName;
   ifstream inFile;
   ofstream outFile;
-  //string magicNum; 
-  char magicNum[MAGIC_NUM_LEN];
+  string magicNum; 
   ColorClass tempPixel;
   RowColumnClass tempLocation;
 
@@ -48,12 +47,15 @@ int main ()  {
       inFile >> imageWid;
       inFile >> imageLen;
       inFile >> maxColorValue;
-
-      if (magicNum == 0)  {
+      /*
+      if (magicNum != MAGIC_NUM_PPM)  {
         cout << "The Magic Number of the input file is invalid." << endl;
       }
-      else if (maxColorValue < COLOR_RANGE_MIN || 
-               maxColorValue > COLOR_RANGE_MAX)  {
+      */
+      if (magicNum != 0)  {
+        cout << "The Magic Number of the input file is invalid." << endl;
+      }
+      else if (maxColorValue != COLOR_RANGE_MAX)  {
         cout << "The maximum color value of the input file is invalid." 
              << endl;
       }
@@ -63,7 +65,6 @@ int main ()  {
       else {
         isValidInput = true;
       }
-      
     }
   }
 
@@ -85,15 +86,17 @@ int main ()  {
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
+      // use a temp RowColumnClass object - tempLocation
+      // and a temp ColorClass object - temp Pixel
+      // such that we can use the setColorAtLocation method 
+      // to read in all pixels and dynamic allocate them 
       tempLocation.setRowCol(rInd, cInd);
       inFile >> tempRed;
       inFile >> tempGreen;
       inFile >> tempBlue;
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       image.setColorAtLocation(tempLocation, tempPixel);
-      outFile << tempRed << " " << tempGreen << " " << tempBlue << " ";
     }
-    outFile << '\n';
   }
   image.printImage();
   inFile.close();
