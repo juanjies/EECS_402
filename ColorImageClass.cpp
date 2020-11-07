@@ -97,5 +97,6 @@ void ColorImageClass::printImage(ofstream &outFile)  {
       }
     }
     cout << endl;
+    outFile << endl;
   }
 }
