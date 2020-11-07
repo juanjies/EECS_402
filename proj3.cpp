@@ -47,12 +47,8 @@ int main ()  {
       inFile >> imageWid;
       inFile >> imageLen;
       inFile >> maxColorValue;
-      /*
-      if (magicNum != MAGIC_NUM_PPM)  {
-        cout << "The Magic Number of the input file is invalid." << endl;
-      }
-      */
-      if (magicNum != 0)  {
+      
+      if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
         cout << "The Magic Number of the input file is invalid." << endl;
       }
       else if (maxColorValue != COLOR_RANGE_MAX)  {
