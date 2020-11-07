@@ -95,7 +95,7 @@ int main ()  {
       image.setColorAtLocation(tempLocation, tempPixel);
     }
   }
-  image.printImage();
+  image.printImage(outFile);
   inFile.close();
   outFile.close();
 }
