@@ -32,11 +32,11 @@ proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
 proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
 					 proj3.o showMenu.o annotateRect.o selectColor.o \
 					 selectFill.o
-	g++ ColorClass.o RowColumnClass.o ColorImageClass.o
-			proj3.o showMenu.o annotateRect.o selectColor.o
+	g++ ColorClass.o RowColumnClass.o ColorImageClass.o \
+			proj3.o showMenu.o annotateRect.o selectColor.o \
 			selectFill.o -o proj3.exe
 
 clean:
-	rm -rf ColorClass.o RowColumnClass.o ColorImageClass.o
-			proj3.o showMenu.o annotateRect.o selectColor.o
+	rm -rf ColorClass.o RowColumnClass.o ColorImageClass.o \
+			proj3.o showMenu.o annotateRect.o selectColor.o \
 			selectFill.o proj3.exe
