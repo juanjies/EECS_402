@@ -49,6 +49,5 @@ ColorClass selectColor()  {
   else if (colorOption == 5)  {
     pixelColor.setToWhite();
   }
-  // return pixelColor;
-  return colorOption;
+  return pixelColor;
 }
