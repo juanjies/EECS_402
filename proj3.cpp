@@ -76,10 +76,6 @@ int main ()  {
   cout << "Max color value = " << maxColorValue << endl; 
 
   ColorImageClass image(imageLen, imageWid);
-  
-  outFile << magicNum << endl;
-  outFile << imageWid << " " << imageLen << endl;
-  outFile << maxColorValue << endl;
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
@@ -111,6 +107,11 @@ int main ()  {
       cout << "Enter string for PPM file name to output: " << endl;
       cin >> fileName;
       outFile.open(fileName.c_str());
+
+      outFile << magicNum << endl;
+      outFile << imageWid << " " << imageLen << endl;
+      outFile << maxColorValue << endl;
+
       image.printImage(outFile);
       outFile.close();
     }
