@@ -25,7 +25,8 @@ selectFill.o: selectFill.cpp selectFill.h constants.h
 	g++ -c selectFill.cpp -o selectFill.o
 
 insertPattern.o: insertPattern.cpp insertPattern.h ColorClass.h \
-								 ColorImageClass.h RowColumnClass.h constants.h
+								 ColorImageClass.h RowColumnClass.h constants.h \
+								 selectColor.h
 	g++ -c insertPattern.cpp -o insertPattern.o
 
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
