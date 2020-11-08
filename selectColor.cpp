@@ -1,5 +1,7 @@
 #include "ColorClass.h"
 #include <iostream>
+#include "constants.h"
+
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a colorclass object based on users' choice
@@ -16,7 +18,7 @@ ColorClass selectColor()  {
   
   while (!isValidInput)  {
     cout << "Enter int for rectangle color" << endl;
-    cin << colorOption;
+    cin >> colorOption;
 
     if (cin.fail())  {
       cin.clear();
