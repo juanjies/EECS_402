@@ -16,15 +16,15 @@ void annotateRect(ColorImageClass &image)  {
   RowColumnClass upperLeftLocation, lowerRightLocation, tempLocation;
 
   cout << "1. Specify upper left and lower right corners of rectangle"
-         << '\n'
-         << "2. Specify upper left corner and dimensions of rectangle"
-         << '\n'
-         << "3. Specify extent from center of rectangle" << '\n';
+       << '\n'
+       << "2. Specify upper left corner and dimensions of rectangle"
+       << '\n'
+       << "3. Specify extent from center of rectangle" << '\n';
          
   
   while (!isValidInput)  {
     cout << "Enter int for retangle specification method" << endl;
-    cin << rectOption;
+    cin >> rectOption;
 
     if (cin.fail())  {
       cin.clear();
@@ -45,10 +45,10 @@ void annotateRect(ColorImageClass &image)  {
     while (!isValidInput)  {
       // get rectangle region
       cout << "Enter upper left corner row and column: " << endl;
-      cin << inRow << inCol;
+      cin >> inRow << inCol;
       upperLeftLocation.setRowCol(inRow, inCol);
       cout << "Enter lower right corner row and column: " << endl;
-      cin << inRow << inCol;
+      cin >> inRow << inCol;
       lowerRightLocation.setRowCol(inRow, inCol);
       // get rectangle color
       rectColor = selectColor();
@@ -68,12 +68,12 @@ void annotateRect(ColorImageClass &image)  {
 
     while (!isValidInput)  {
       cout << "Enter upper left corner row and column: " << endl;
-      cin << inRow << inCol;
+      cin >> inRow << inCol;
       upperLeftLocation.setRowCol(inRow, inCol);
       cout << "Enter int for number of rows: " << endl;
-      cin << numRow;
+      cin >> numRow;
       cout << "Enter int for number of columns " << endl;
-      cin << numCol;
+      cin >> numCol;
       lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
 
       if (cin.fail())  {
@@ -91,11 +91,11 @@ void annotateRect(ColorImageClass &image)  {
 
     while (!isValidInput)  {
       cout << "Enter rectangle center row and column: " << endl;
-      cin << inRow << inCol;
+      cin >> inRow << inCol;
       cout << "Enter int for half number of rows: " << endl;
-      cin << numRow;
+      cin >> numRow;
       cout << "Enter int for half number of columns " << endl;
-      cin << numCol;
+      cin >> numCol;
       upperLeftLocation.setRowCol(inRow - numRow, inCol - numCol);
       lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
 
