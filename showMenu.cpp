@@ -14,7 +14,7 @@ int showMenu()  {
        << "4. Write out current image" << '\n'
        << "5. Exit the program" << '\n'
        << "Enter int for main menu choice: " << endl;
-  cin  >> topManuOpt;
+  cin  >> topMenuOpt;
     
   return topMenuOpt;
 }
