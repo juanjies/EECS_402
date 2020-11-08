@@ -12,7 +12,7 @@
 void annotateRect(ColorImageClass &image)  {
   int rectOption = 0;
   int inRow = 0, inCol = 0, numRow = 0, numCol = 0;
-  bool isValidInput = false;
+  bool isValidInput = false, isFilled = false;
   ColorClass rectColor;
   RowColumnClass upperLeftLocation, lowerRightLocation, tempLocation;
 
@@ -113,9 +113,9 @@ void annotateRect(ColorImageClass &image)  {
 
   // get rectangle color
   rectColor = selectColor();
-
+  isFilled = selectFill();
   // annotate the input object 
-  if (selectFill())  {
+  if (isFilled)  {
     for (int rInd = 0; 
           rInd < lowerRightLocation.getRow() - upperLeftLocation.getRow();
           rInd++)  {
@@ -127,7 +127,7 @@ void annotateRect(ColorImageClass &image)  {
       }
     }
   }
-  else if (!selectFill())  {
+  else if (isFilled)  {
     // loop throught the top and the bottom row
     for (int rInd = 0;
           rInd < lowerRightLocation.getRow() - upperLeftLocation.getRow();
