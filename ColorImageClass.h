@@ -32,6 +32,8 @@ class ColorImageClass  {
     bool getColorAtLocation(RowColumnClass &inRowCol, ColorClass &outColor);
     // print the contents of the image
     void printImage(ofstream &outFile);
+    int getColLen();
+    int getRowLen();
 };
 
 #endif

@@ -6,6 +6,10 @@
 #include "ColorClass.h"
 #include "ColorImageClass.h"
 #include "RowColumnClass.h"
+#include "showMenu.h"
+#include "annotateRect.h"
+#include "selectColor.h"
+#include "selectFill.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -21,8 +25,9 @@ int main ()  {
   ColorClass tempPixel;
   RowColumnClass tempLocation;
 
-  int imageWid = 0, imageLen = 0, maxColorValue = 0; // temp
+  int imageWid = 0, imageLen = 0, maxColorValue = 0; 
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
+  int topManuOpt = 0;
   bool isValidInput = false;
   
   cout << "Enter string for PPM image file name to load: " << endl;
@@ -95,6 +100,11 @@ int main ()  {
       image.setColorAtLocation(tempLocation, tempPixel);
     }
   }
+  topManuOpt = showMenu();
+  if (topManuOpt == 1)  {
+    annotateRect(image);
+  }
+  // Nov 7
   image.printImage(outFile);
   inFile.close();
   outFile.close();

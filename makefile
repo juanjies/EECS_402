@@ -10,11 +10,33 @@ ColorImageClass.o: ColorImageClass.cpp ColorClass.h ColorImageClass.h \
                    RowColumnClass.h
 	g++ -c ColorImageClass.cpp -o ColorImageClass.o
 
-proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h
+showMenu.o: showMenu.cpp showMenu.h 
+	g++ -c showMenu.cpp -o showMenu.o
+
+annotateRect.o: annotateRect.cpp annotateRect.h constants.h \
+								RowColumnClass.h selectColor.h ColorClass.h \
+								ColorImageClass.h
+	g++ -c annotateRect.cpp -o annotateRect.o
+
+selectColor.o: selectColor.cpp selectColor.h ColorClass.h
+	g++ -c selectColor.cpp -o selectColor.o
+
+selectFill.o: selectFill.cpp selectFill.h 
+	g++ -c selectFill.cpp -o selectFill.o
+
+proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
+				 RowColumnClass.h showMenu.h annotateRect.h \
+				 selectColor.h selectFill.h
 	g++ -c proj3.cpp -o proj3.o
 
-proj3.exe: proj3.o ColorClass.o ColorImageClass.o RowColumnClass.o
-	g++ proj3.o RowColumnClass.o ColorClass.o ColorImageClass.o -o proj3.exe
+proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
+					 proj3.o showMenu.o annotateRect.o selectColor.o \
+					 selectFill.o
+	g++ ColorClass.o RowColumnClass.o ColorImageClass.o
+			proj3.o showMenu.o annotateRect.o selectColor.o
+			selectFill.o -o proj3.exe
 
 clean:
-	rm -rf proj3.o RowColumnClass.o ColorClass.o ColorImageClass.o proj3.exe
+	rm -rf ColorClass.o RowColumnClass.o ColorImageClass.o
+			proj3.o showMenu.o annotateRect.o selectColor.o
+			selectFill.o proj3.exe

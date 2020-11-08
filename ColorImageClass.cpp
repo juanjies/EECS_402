@@ -100,3 +100,11 @@ void ColorImageClass::printImage(ofstream &outFile)  {
     outFile << endl;
   }
 }
+
+int ColorImageClass::getColLen()  {
+  return arrayLen;
+}
+
+int ColorImageClass::getRowLen()  {
+  return arrayWid;
+}

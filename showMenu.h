@@ -1,9 +1,7 @@
 #ifndef _showMenu_H_
 #define _showMenu_H_
 
-// show the top menu
-// return the option from users
+// Programmer: Juan-Jie Sun
+// Date: November 2020
+// Purpose: show the top menu for users to choose a image edit option
 int showMenu();
-// show the second layer manu based on users' choice on the top menu
-// 
-int showMenu(int optionNum);
