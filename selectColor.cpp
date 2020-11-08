@@ -6,7 +6,9 @@ using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a colorclass object based on users' choice
-ColorClass selectColor()  {
+// output a object seems doesn't work...
+// ColorClass selectColor()  {
+int selectColor()  {
   int colorOption = 0;
   ColorClass pixelColor;
   bool isValidInput = false;
@@ -49,5 +51,6 @@ ColorClass selectColor()  {
   else if (colorOption == 5)  {
     pixelColor.setToWhite();
   }
-  return pixelColor;
+  // return pixelColor;
+  return colorOption;
 }
