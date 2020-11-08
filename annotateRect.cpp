@@ -4,6 +4,7 @@
 #include "selectColor.h"
 #include "ColorClass.h"
 #include "ColorImageClass.h"
+#include "selectFill.h"
 
 // Programmer: Juan-Jie Sun
 // Date: November 2020
@@ -128,6 +129,7 @@ void annotateRect(ColorImageClass &image)  {
           rInd < lowerRightLocation.getRow() - upperLeftLocation.getRow();
           rInd++)  {
       // top row of the empty rectangle
+      int cInd;
       cInd = upperLeftLocation.getCol();
       tempLocation.setRowCol(rInd, cInd);
       image.setColorAtLocation(tempLocation, rectColor);
@@ -141,6 +143,7 @@ void annotateRect(ColorImageClass &image)  {
           cInd < lowerRightLocation.getCol() - upperLeftLocation.getCol();
           cInd++)  {
       // left column of the empty rectangle
+      int rInd;
       rInd = upperLeftLocation.getRol();
       tempLocation.setRowCol(rInd, cInd);
       image.setColorAtLocation(tempLocation, rectColor);
