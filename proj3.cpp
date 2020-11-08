@@ -120,8 +120,6 @@ int main ()  {
     }
   }
   
-  
 
-  
   inFile.close();
 }

@@ -6,7 +6,7 @@ ColorImageClass::ColorImageClass(int imageLen, int imageWid)  {
   arrayLen = imageLen;
   arrayWid = imageWid;
 
-  image = new ColorClass*[arrayLen];
+  image = new ColorClass *[arrayLen];
   for (int rInd = 0; rInd < arrayLen; rInd++)  {
     image[rInd] = new ColorClass[arrayWid];
   }  
@@ -93,10 +93,8 @@ void ColorImageClass::printImage(ofstream &outFile)  {
       }
       else  {
         image[i][j].printComponentValues(outFile);
-      cout << "--";
       }
     }
-    cout << endl;
     outFile << endl;
   }
 }
