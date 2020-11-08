@@ -17,7 +17,7 @@ bool selectFill()  {
 
   while (!isValidInput)  {
     cout << "Enter int for rectangle fill option" << endl;
-    cin << fillOption;
+    cin >> fillOption;
 
     if (cin.fail())  {
       cin.clear();
