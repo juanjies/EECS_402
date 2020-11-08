@@ -127,7 +127,7 @@ void annotateRect(ColorImageClass &image)  {
       }
     }
   }
-  else if (isFilled)  {
+  else if (!isFilled)  {
     // loop throught the top and the bottom row
     for (int rInd = upperLeftLocation.getRow();
           rInd < lowerRightLocation.getRow();
