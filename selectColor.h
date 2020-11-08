@@ -6,7 +6,6 @@
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a colorclass object based on users' choice
-// ColorClass selectColor();
-int selectColor();
+ColorClass selectColor();
 
 #endif

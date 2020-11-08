@@ -6,9 +6,7 @@ using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a colorclass object based on users' choice
-// output a object seems doesn't work...
-// ColorClass selectColor()  {
-int selectColor()  {
+ColorClass selectColor()  {
   int colorOption = 0;
   ColorClass pixelColor;
   bool isValidInput = false;
