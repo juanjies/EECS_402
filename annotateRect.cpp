@@ -51,9 +51,7 @@ void annotateRect(ColorImageClass &image)  {
       cout << "Enter lower right corner row and column: " << endl;
       cin >> inRow >> inCol;
       lowerRightLocation.setRowCol(inRow, inCol);
-      // get rectangle color
-      rectColor = selectColor();
-      
+ 
       if (cin.fail())  {
         cin.clear();
         cin.ignore(IGNORED_CHAR_LEN, '\n');
@@ -112,6 +110,9 @@ void annotateRect(ColorImageClass &image)  {
       }
     }
   } 
+
+  // get rectangle color
+  rectColor = selectColor();
 
   // annotate the input object 
   if (selectFill())  {
