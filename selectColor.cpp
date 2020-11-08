@@ -2,6 +2,7 @@
 #include <iostream>
 #include "constants.h"
 
+using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a colorclass object based on users' choice
