@@ -45,10 +45,10 @@ void annotateRect(ColorImageClass &image)  {
     while (!isValidInput)  {
       // get rectangle region
       cout << "Enter upper left corner row and column: " << endl;
-      cin >> inRow << inCol;
+      cin >> inRow >> inCol;
       upperLeftLocation.setRowCol(inRow, inCol);
       cout << "Enter lower right corner row and column: " << endl;
-      cin >> inRow << inCol;
+      cin >> inRow >> inCol;
       lowerRightLocation.setRowCol(inRow, inCol);
       // get rectangle color
       rectColor = selectColor();
@@ -68,7 +68,7 @@ void annotateRect(ColorImageClass &image)  {
 
     while (!isValidInput)  {
       cout << "Enter upper left corner row and column: " << endl;
-      cin >> inRow << inCol;
+      cin >> inRow >> inCol;
       upperLeftLocation.setRowCol(inRow, inCol);
       cout << "Enter int for number of rows: " << endl;
       cin >> numRow;
@@ -91,7 +91,7 @@ void annotateRect(ColorImageClass &image)  {
 
     while (!isValidInput)  {
       cout << "Enter rectangle center row and column: " << endl;
-      cin >> inRow << inCol;
+      cin >> inRow >> inCol;
       cout << "Enter int for half number of rows: " << endl;
       cin >> numRow;
       cout << "Enter int for half number of columns " << endl;
