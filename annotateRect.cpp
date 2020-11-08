@@ -116,11 +116,11 @@ void annotateRect(ColorImageClass &image)  {
   isFilled = selectFill();
   // annotate the input object 
   if (isFilled)  {
-    for (int rInd = 0; 
-          rInd < lowerRightLocation.getRow() - upperLeftLocation.getRow();
+    for (int rInd = upperLeftLocation.getRow(); 
+          rInd < lowerRightLocation.getRow();
           rInd++)  {
-      for (int cInd = 0;
-          cInd < lowerRightLocation.getCol() - upperLeftLocation.getCol();
+      for (int cInd = upperLeftLocation.getCol();
+          cInd < lowerRightLocation.getCol();
           cInd++)  {
         tempLocation.setRowCol(rInd, cInd);
         image.setColorAtLocation(tempLocation, rectColor);
@@ -129,8 +129,8 @@ void annotateRect(ColorImageClass &image)  {
   }
   else if (isFilled)  {
     // loop throught the top and the bottom row
-    for (int rInd = 0;
-          rInd < lowerRightLocation.getRow() - upperLeftLocation.getRow();
+    for (int rInd = upperLeftLocation.getRow();
+          rInd < lowerRightLocation.getRow();
           rInd++)  {
       // top row of the empty rectangle
       int cInd;
@@ -143,8 +143,8 @@ void annotateRect(ColorImageClass &image)  {
       image.setColorAtLocation(tempLocation, rectColor);
     }
     // loop throught the left and the right column
-    for (int cInd = 0;
-          cInd < lowerRightLocation.getCol() - upperLeftLocation.getCol();
+    for (int cInd = upperLeftLocation.getCol();
+          cInd < lowerRightLocation.getCol();
           cInd++)  {
       // left column of the empty rectangle
       int rInd;
