@@ -24,6 +24,10 @@ selectColor.o: selectColor.cpp selectColor.h ColorClass.h constants.h
 selectFill.o: selectFill.cpp selectFill.h constants.h
 	g++ -c selectFill.cpp -o selectFill.o
 
+insertPattern.o: insertPattern.cpp insertPattern.h ColorClass.h \
+								 ColorImageClass.h RowColumnClass.h constants.h
+	g++ -c insertPattern.cpp -o insertPattern.o
+
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
 				 RowColumnClass.h showMenu.h annotateRect.h \
 				 selectColor.h selectFill.h
@@ -31,10 +35,10 @@ proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
 
 proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
 					 proj3.o showMenu.o annotateRect.o selectColor.o \
-					 selectFill.o
+					 selectFill.o insertPattern.o
 	g++ ColorClass.o RowColumnClass.o ColorImageClass.o \
 			proj3.o showMenu.o annotateRect.o selectColor.o \
-			selectFill.o -o proj3.exe
+			selectFill.o insertPattern.o -o proj3.exe
 
 clean:
 	rm -rf ColorClass.o RowColumnClass.o ColorImageClass.o \
