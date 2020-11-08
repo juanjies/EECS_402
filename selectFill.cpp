@@ -1,6 +1,7 @@
-#include "selectFill.h"
 #include <iostream>
+#include "selectFill.h"
 
+using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: output a boolean to determine if the rectangle annotation 
