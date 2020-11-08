@@ -1,5 +1,6 @@
 #include <iostream>
 #include "selectFill.h"
+#include "constants.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -23,7 +24,7 @@ bool selectFill()  {
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid fill option input" << endl;
     }
-    else if (rectOption > 2 || rectOption < 1)  {
+    else if (fillOption > 2 || fillOption < 1)  {
       cout << "Invalid fill option input" << endl;
     }
     else  {

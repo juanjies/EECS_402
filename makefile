@@ -18,10 +18,10 @@ annotateRect.o: annotateRect.cpp annotateRect.h constants.h \
 								ColorImageClass.h
 	g++ -c annotateRect.cpp -o annotateRect.o
 
-selectColor.o: selectColor.cpp selectColor.h ColorClass.h
+selectColor.o: selectColor.cpp selectColor.h ColorClass.h constants.h
 	g++ -c selectColor.cpp -o selectColor.o
 
-selectFill.o: selectFill.cpp selectFill.h 
+selectFill.o: selectFill.cpp selectFill.h constants.h
 	g++ -c selectFill.cpp -o selectFill.o
 
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
