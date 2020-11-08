@@ -27,7 +27,7 @@ int main ()  {
 
   int imageWid = 0, imageLen = 0, maxColorValue = 0; 
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
-  int topManuOpt = 0;
+  int topMenuOpt = 0;
   bool isValidInput = false;
   
   cout << "Enter string for PPM image file name to load: " << endl;
@@ -70,15 +70,10 @@ int main ()  {
     }
   }
 
-  
   cout << "Magic Number is: " << magicNum << endl;
   cout << "Image Width = " << imageWid << endl;
   cout << "Image Length = " << imageLen << endl;
-  cout << "Max color value = " << maxColorValue << endl;
-
-  cout << "Enter string for PPM file name to output: " << endl;
-  cin >> fileName;
-  outFile.open(fileName.c_str()); 
+  cout << "Max color value = " << maxColorValue << endl; 
 
   ColorImageClass image(imageLen, imageWid);
   
@@ -100,12 +95,32 @@ int main ()  {
       image.setColorAtLocation(tempLocation, tempPixel);
     }
   }
-  topManuOpt = showMenu();
-  if (topManuOpt == 1)  {
-    annotateRect(image);
+  
+  while (topMenuOpt != 5)  {
+    topMenuOpt = showMenu();
+
+    if (topMenuOpt == 1)  {
+      annotateRect(image);
+    }
+    else if (topMenuOpt == 2)  {
+    }
+    else if (topMenuOpt == 3)  {
+    }
+    // write out current image
+    else if (topMenuOpt == 4)  {
+      cout << "Enter string for PPM file name to output: " << endl;
+      cin >> fileName;
+      outFile.open(fileName.c_str());
+      image.printImage(outFile);
+      outFile.close();
+    }
+    else if (topMenuOpt == 5)  {
+      cout << "Thank you for using this program"
+    }
   }
-  // Nov 7
-  image.printImage(outFile);
+  
+  
+
+  
   inFile.close();
-  outFile.close();
 }

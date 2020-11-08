@@ -51,8 +51,9 @@ class ColorClass  {
     // cast the product value as an integer 
     // return true if there's any clipping
     bool adjustBrightness(double adjFactor);
-    // print out value as "R:<> G:<> B:<>"
+    // print out value as "R:<> G:<> B:<>" to console
     void printComponentValues();
+    // print out value as "<R> <G> <B> " to the output file stream
     void printComponentValues(ofstream &outFile);
 };
 
