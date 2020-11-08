@@ -19,7 +19,7 @@ void annotateRect(ColorImageClass &image)  {
          << '\n'
          << "2. Specify upper left corner and dimensions of rectangle"
          << '\n'
-         << "3. Specify extent from center of rectangle" << '\n'
+         << "3. Specify extent from center of rectangle" << '\n';
          
   
   while (!isValidInput)  {
