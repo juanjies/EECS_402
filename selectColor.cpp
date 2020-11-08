@@ -10,10 +10,10 @@ ColorClass selectColor()  {
   ColorClass pixelColor;
   bool isValidInput = false;
 
-  cout << "1. Red" << endl;
-       << "2. Green" << endl;
-       << "3. Blue" << endl;
-       << "4. Black" << endl;
+  cout << "1. Red" << endl
+       << "2. Green" << endl
+       << "3. Blue" << endl
+       << "4. Black" << endl
        << "5. White" << endl;
   
   while (!isValidInput)  {
