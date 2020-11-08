@@ -25,7 +25,7 @@ ColorClass selectColor()  {
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid color input" << endl;
     }
-    else if (rectOption > 5 || rectOption < 1)  {
+    else if (colorOption > 5 || colorOption < 1)  {
       cout << "Invalid color input" << endl;
     }
     else  {
