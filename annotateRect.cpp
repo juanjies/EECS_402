@@ -8,7 +8,7 @@
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: to annotate an image with a rectangle
-void annotate(ColorImageClass &image)  {
+void annotateRect(ColorImageClass &image)  {
   int rectOption = 0;
   int inRow = 0, inCol = 0, numRow = 0, numCol = 0;
   bool isValidInput = false;

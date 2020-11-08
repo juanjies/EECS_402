@@ -2,6 +2,6 @@
 #define _annotateRect_H_
 
 // to annotate an image with a rectangle 
-void annotate(ColorImageClass &image);
+void annotateRect(ColorImageClass &image);
 
 #endif
