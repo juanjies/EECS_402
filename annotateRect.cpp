@@ -61,6 +61,7 @@ void annotateRect(ColorImageClass &image)  {
       }
       else  {
         isValidInput = true;
+      }
     }
   }  
   // method 2 - upper left and dimension
@@ -84,6 +85,7 @@ void annotateRect(ColorImageClass &image)  {
       }
       else  {
         isValidInput = true;
+      }
     }
   }
   // method 3 - center and dimension
@@ -107,6 +109,7 @@ void annotateRect(ColorImageClass &image)  {
       }
       else  {
         isValidInput = true;
+      }
     }
   } 
 
