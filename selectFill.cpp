@@ -38,5 +38,5 @@ bool selectFill()  {
   else if (fillOption == 2)  {
     isFill = true;
   }
-  reture isFill;
+  return isFill;
 }
