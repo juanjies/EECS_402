@@ -115,7 +115,7 @@ int main ()  {
       outFile.close();
     }
     else if (topMenuOpt == 5)  {
-      cout << "Thank you for using this program"
+      cout << "Thank you for using this program";
     }
   }
   
