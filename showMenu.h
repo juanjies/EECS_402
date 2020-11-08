@@ -5,3 +5,5 @@
 // Date: November 2020
 // Purpose: show the top menu for users to choose a image edit option
 int showMenu();
+
+#endif

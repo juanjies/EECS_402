@@ -6,3 +6,5 @@
 // Purpose: output a boolean to determine if the rectangle annotation 
 //          should be filled or not 
 bool selectFill();
+
+#endif

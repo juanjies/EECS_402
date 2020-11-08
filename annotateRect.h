@@ -3,3 +3,5 @@
 
 // to annotate an image with a rectangle 
 void annotate(ColorImageClass &image);
+
+#endif
