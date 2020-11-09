@@ -10,6 +10,7 @@
 #include "annotateRect.h"
 #include "selectColor.h"
 #include "selectFill.h"
+#include "TransparencyClass.h"
 #include "insertPattern.h"
 #include "insertImage.h"
 

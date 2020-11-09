@@ -41,12 +41,13 @@ insertImage.o: insertImage.cpp insertImage.h ColorClass.h \
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
 				 RowColumnClass.h showMenu.h annotateRect.h \
 				 selectColor.h selectFill.h insertPattern.h \
-         insertImage.h
+         insertImage.h TransparencyClass.h
 	g++ -c proj3.cpp -o proj3.o
 
 proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
 					 proj3.o showMenu.o annotateRect.o selectColor.o \
-					 selectFill.o insertPattern.o insertImage.o
+					 selectFill.o insertPattern.o insertImage.o \
+					 TransparencyClass.o
 	g++ ColorClass.o RowColumnClass.o ColorImageClass.o \
 			proj3.o showMenu.o annotateRect.o selectColor.o \
 			selectFill.o insertPattern.o -o proj3.exe
