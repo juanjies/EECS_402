@@ -50,9 +50,11 @@ proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
 					 TransparencyClass.o
 	g++ ColorClass.o RowColumnClass.o ColorImageClass.o \
 			proj3.o showMenu.o annotateRect.o selectColor.o \
-			selectFill.o insertPattern.o -o proj3.exe
+			selectFill.o insertPattern.o insertImage.o \
+			TransparencyClass.o -o proj3.exe
 
 clean:
 	rm -rf ColorClass.o RowColumnClass.o ColorImageClass.o \
 			proj3.o showMenu.o annotateRect.o selectColor.o \
-			selectFill.o proj3.exe
+			selectFill.o insertPattern.o TransparencyClass.o \
+			insertImage.o proj3.o proj3.exe
