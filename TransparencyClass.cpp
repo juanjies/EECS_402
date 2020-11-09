@@ -1,4 +1,5 @@
 #include "TransparencyClass.h"
+#include "RowColumnClass.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun

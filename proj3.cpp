@@ -11,6 +11,7 @@
 #include "selectColor.h"
 #include "selectFill.h"
 #include "insertPattern.h"
+#include "insertImage.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -103,6 +104,7 @@ int main ()  {
       insertPattern(image);
     }
     else if (topMenuOpt == 3)  {
+      insertImage(image);
     }
     // write out current image
     else if (topMenuOpt == 4)  {
