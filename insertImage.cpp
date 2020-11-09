@@ -14,7 +14,7 @@ void insertImage(ColorImageClass &image)  {
   int imageWid = 0, imageLen = 0;
   int maxColorValue = 0;
   int inRow = 0, inCol = 0;
-  istream inFile;
+  ifstream inFile;
   string fileName, magicNum;
   ColorClass transColor;
   ColorImageClass addedImage;
