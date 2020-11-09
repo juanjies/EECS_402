@@ -16,9 +16,10 @@ void insertImage(ColorImageClass &image)  {
   int imageWid = 0, imageLen = 0;
   int maxColorValue = 0;
   int inRow = 0, inCol = 0;
+  int tempRed = 0, tempGreen = 0, tempBlue = 0;
   ifstream inFile;
   string fileName, magicNum;
-  ColorClass transColor;
+  ColorClass transColor, tempPixel;
   RowColumnClass upperLeftLocation, tempLocation;
 
   cout << "Enter string for file name of PPM image to insert: " << endl;
@@ -59,7 +60,13 @@ void insertImage(ColorImageClass &image)  {
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
-      inFile >> addedImage[rInd][cInd];
+      tempLocation.setRowCol(rInd, cInd);
+      inFile >> tempRed;
+      inFile >> tempGreen;
+      inFile >> tempBlue;
+      tempPixel.setTo(tempRed, tempGreen, tempBlue);
+      image.setColorAtLocation(tempLocation, tempPixel);
+
       if (transColor.compareColor(addedImage[rInd][cInd]))  {
         transMatrix[rInd][cInd] == 0;
       }
@@ -79,7 +86,8 @@ void insertImage(ColorImageClass &image)  {
       if (transMatrix[rInd][cInd] == 1)  {
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
-        image.setColorAtLocation(tempLocation, addedImage[rInd][cInd]);
+        addedImage.getColorAtLocation(tempLocation, tempPixel);
+        image.setColorAtLocation(tempLocation, tempPixel);
       }
       else if (transMatrix[rInd][cInd] == 0) {
         ;
