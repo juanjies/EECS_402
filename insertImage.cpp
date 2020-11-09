@@ -56,18 +56,26 @@ void insertImage(ColorImageClass &image)  {
   ColorImageClass addedImage(imageLen, imageWid);
   TransparencyClass transMatrix(imageLen, imageWid);
 
+  cout << "Enter upper left corner to insert image row and column: " 
+       << endl;
+  cin >> inRow >> inCol;
+  upperLeftLocation.setRowCol(inRow, inCol);
+
   transColor = selectColor(); // cout problem here
   // cout text always show rectangle color
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {
+      // store the inFile pixels to addedImage
       tempLocation.setRowCol(rInd, cInd);
       inFile >> tempRed;
       inFile >> tempGreen;
       inFile >> tempBlue;
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
-      image.setColorAtLocation(tempLocation, tempPixel);
-
+      addedImage.setColorAtLocation(tempLocation, tempPixel);
+      // get the pixel of addedImage 
+      // compare it with user specified transColor
+      // form the transMatrix
       tempLocation.setRowCol(rInd, cInd);
       addedImage.getColorAtLocation(tempLocation, tempPixel);
       if (transColor.compareColor(tempPixel))  {
@@ -79,19 +87,17 @@ void insertImage(ColorImageClass &image)  {
     }
   }
 
-  cout << "Enter upper left corner to insert image row and column: " 
-       << endl;
-  cin >> inRow >> inCol;
-  upperLeftLocation.setRowCol(inRow, inCol);
-
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0;  cInd < imageWid; cInd++)  {
+      // edit the image if the bool at the location
+      // is not transparent
       if (!transMatrix.getTransAtLocation(rInd, cInd))  {
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
         addedImage.getColorAtLocation(tempLocation, tempPixel);
         image.setColorAtLocation(tempLocation, tempPixel);
       }
+      // if it is transparent, then do nothing
       else if (transMatrix.getTransAtLocation(rInd, cInd)) {
         ;
       }
