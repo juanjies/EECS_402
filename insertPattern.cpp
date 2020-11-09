@@ -64,15 +64,11 @@ void insertPattern(ColorImageClass &image)  {
     }
   }
   // add pattern to the image
-  for (int rInd = 0;
-       rInd < patternLen;
-       rInd++)  {
-    for (int cInd = 0;
-         cInd < patternWid;
-         cInd++)  {
+  for (int rInd = 0; rInd < patternLen; rInd++)  {
+    for (int cInd = 0;  cInd < patternWid; cInd++)  {
       if (pattern[rInd][cInd] == 1)  {
-        tempLocation.setRowCol(upperLeftLocation.getRow() + rInd
-          , upperLeftLocation.getCol() + cInd);
+        tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
+          upperLeftLocation.getCol() + cInd);
         image.setColorAtLocation(tempLocation, patternColor);
       }
       else if (pattern[rInd][cInd] == 0) {

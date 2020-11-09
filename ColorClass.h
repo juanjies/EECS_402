@@ -55,6 +55,10 @@ class ColorClass  {
     void printComponentValues();
     // print out value as "<R> <G> <B> " to the output file stream
     void printComponentValues(ofstream &outFile);
+    // compare with the input pixel ColorClass
+    // return true if RGB are the same
+    // return false if RGB are not the same
+    bool compareColor(ColorClass &inPixel);
 };
 
 #endif

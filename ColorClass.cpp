@@ -160,3 +160,16 @@ void ColorClass::printComponentValues()  {
 void ColorClass::printComponentValues(ofstream &outFile)  {
   outFile << valRed << " " << valGreen << " " << valBlue << " ";
 }
+
+bool ColorClass::compareColor(ColorClass &inPixel)  {
+  bool isSame = false;
+  if (valRed == inPixel.valRed &&
+      pixelOne.valGreen == inPixel.valGreen &&
+      pixelOne.valBlue == inPixel.valBlue)  {
+    isSame = true;
+  }
+  else  {
+    isSame = false;
+  }
+  return isSame;
+}

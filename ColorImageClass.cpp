@@ -20,7 +20,7 @@ ColorImageClass::ColorImageClass(int imageLen, int imageWid)  {
 
 ColorImageClass::~ColorImageClass()  {
   for (int rInd = 0; rInd < arrayLen; rInd++)  {
-  delete [] image[rInd];
+    delete [] image[rInd];
   }
   delete [] image;
 }

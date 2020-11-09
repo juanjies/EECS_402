@@ -3,9 +3,7 @@
 
 #include "ColorImageClass.h"
 #include <fstream>
-#include "constants.h"
 #include "RowColumnClass.h"
-#include "ColorClass.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
