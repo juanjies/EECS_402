@@ -31,7 +31,7 @@ insertPattern.o: insertPattern.cpp insertPattern.h ColorClass.h \
 
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
 				 RowColumnClass.h showMenu.h annotateRect.h \
-				 selectColor.h selectFill.h insertPattern.h \
+				 selectColor.h selectFill.h insertPattern.h 
 	g++ -c proj3.cpp -o proj3.o
 
 proj3.exe: ColorClass.o RowColumnClass.o ColorImageClass.o \
