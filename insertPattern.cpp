@@ -3,6 +3,8 @@
 #include "constants.h"
 #include "RowColumnClass.h"
 #include "ColorClass.h"
+#include "selectColor.h"
+#include <cstdlib>
 
 using namespace std;
 // Programmer: Juan-Jie Sun
