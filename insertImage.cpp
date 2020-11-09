@@ -1,10 +1,12 @@
 #include <iostream>
+#include <cstdlib>
 #include "ColorClass.h"
 #include "ColorImageClass.h"
 #include "selectColor.h"
 #include <string>
 #include "TransparencyClass.h"
 #include "RowColumnClass.h"
+#include "constants.h"
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
@@ -17,12 +19,11 @@ void insertImage(ColorImageClass &image)  {
   ifstream inFile;
   string fileName, magicNum;
   ColorClass transColor;
-  ColorImageClass addedImage;
   RowColumnClass upperLeftLocation, tempLocation;
 
   cout << "Enter string for file name of PPM image to insert: " << endl;
   cin >> fileName;
-  inFile.open(filename.c_str());
+  inFile.open(fileName.c_str());
 
   // error check for file opening process
   if (inFile.fail())  {
@@ -50,7 +51,7 @@ void insertImage(ColorImageClass &image)  {
   inFile >> imageLen;
   inFile >> maxColorValue;
   // .ppm contents checking
-
+  ColorImageClass addedImage(imageLen, imageWid);
   TransparencyClass transMatrix(imageLen, imageWid);
 
   transColor = selectColor(); // cout problem here

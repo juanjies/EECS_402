@@ -35,7 +35,7 @@ TransparencyClass.o: TransparencyClass.cpp TransparencyClass.h \
 
 insertImage.o: insertImage.cpp insertImage.h ColorClass.h \
 							 ColorImageClass.h selectColor.h TransparencyClass.h \
-               RowColumnClass.h
+               RowColumnClass.h constants.h
 	g++ -c insertImage.cpp -o insertImage.o
 
 proj3.o: proj3.cpp constants.h ColorClass.h ColorImageClass.h \
