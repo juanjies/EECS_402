@@ -22,7 +22,9 @@ void insertPattern(ColorImageClass &image)  {
   int **pattern;
 
   cout << "Enter string for file name containing pattern: " << endl;
-
+  cin >> filename;
+  inFile.open(filename.c_str());
+  // error check for file opening process
   if (inFile.fail())  {
 		cout << "Unable to open the pattern file!" << endl;
     exit(1);
