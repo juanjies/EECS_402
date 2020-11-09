@@ -67,11 +67,13 @@ void insertImage(ColorImageClass &image)  {
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       image.setColorAtLocation(tempLocation, tempPixel);
 
-      if (transColor.compareColor(addedImage[rInd][cInd]))  {
-        transMatrix[rInd][cInd] == 0;
+      tempLocation.setRowCol(rInd, cInd);
+      addedImage.getColorAtLocation(tempLocation, tempPixel);
+      if (transColor.compareColor(tempPixel))  {
+        transMatrix.setTransAtLocation(tempLocation);
       }
-      else if (!transColor.compareColor(addedImage[rInd][cInd]))  {
-        transMatrix[rInd][cInd] == 1;
+      else if (!transColor.compareColor(tempPixel))  {
+        transMatrix.setNotTransAtLocation(tempLocation);
       }
     }
   }
@@ -83,13 +85,13 @@ void insertImage(ColorImageClass &image)  {
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0;  cInd < imageWid; cInd++)  {
-      if (transMatrix[rInd][cInd] == 1)  {
+      if (!transMatrix.getTransAtLocation(rInd, cInd))  {
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
         addedImage.getColorAtLocation(tempLocation, tempPixel);
         image.setColorAtLocation(tempLocation, tempPixel);
       }
-      else if (transMatrix[rInd][cInd] == 0) {
+      else if (transMatrix.getTransAtLocation(rInd, cInd)) {
         ;
       }
     }

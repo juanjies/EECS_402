@@ -30,6 +30,17 @@ TransparencyClass::~TransparencyClass()  {
   delete [] transMatrix;
 }
 
+bool TransparencyClass::getTransAtLocation(int inRow, int inCol)  {
+  bool isTrans = false;
+  if (transMatrix[inRow][inCol] == 1)  {
+    isTrans = false;
+  }
+  else if (transMatrix[inRow][inCol] == 0)  {
+    isTrans = true;
+  }
+  return isTrans;
+}
+
 void TransparencyClass::setTransAtLocation(RowColumnClass &inRowCol)  {
   transMatrix[inRowCol.getRow()][inRowCol.getCol()] = 0;
 }
