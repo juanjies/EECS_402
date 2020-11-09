@@ -10,6 +10,7 @@
 #include "annotateRect.h"
 #include "selectColor.h"
 #include "selectFill.h"
+#include "insertPattern.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -99,6 +100,7 @@ int main ()  {
       annotateRect(image);
     }
     else if (topMenuOpt == 2)  {
+      insertPattern(image);
     }
     else if (topMenuOpt == 3)  {
     }
