@@ -92,9 +92,10 @@ void insertImage(ColorImageClass &image)  {
       // edit the image if the bool at the location
       // is not transparent
       if (!transMatrix.getTransAtLocation(rInd, cInd))  {
+        tempLocation.setRowCol(rInd, cInd);
+        addedImage.getColorAtLocation(tempLocation, tempPixel);
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
-        addedImage.getColorAtLocation(tempLocation, tempPixel);
         image.setColorAtLocation(tempLocation, tempPixel);
       }
       // if it is transparent, then do nothing
