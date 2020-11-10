@@ -13,7 +13,7 @@ TransparencyClass::TransparencyClass(int inRow, int inCol)  {
 
   transMatrix = new int *[matrixLen];
   for (int rInd = 0; rInd < matrixLen; rInd++)  {
-    transMatrix[rInd] = new int[matrixLen];
+    transMatrix[rInd] = new int[matrixWid];
   }  
 
   for (int i = 0; i < matrixLen; i++)  {
