@@ -73,11 +73,6 @@ int main ()  {
     }
   }
 
-  cout << "Magic Number is: " << magicNum << endl;
-  cout << "Image Width = " << imageWid << endl;
-  cout << "Image Length = " << imageLen << endl;
-  cout << "Max color value = " << maxColorValue << endl; 
-
   ColorImageClass image(imageLen, imageWid);
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
@@ -124,7 +119,5 @@ int main ()  {
       cout << "Thank you for using this program" << endl;
     }
   }
-  
-
   inFile.close();
 }
