@@ -20,7 +20,6 @@ void insertPattern(ColorImageClass &image)  {
   bool isValidInput = false;
   int inRow = 0, inCol = 0, tempInt = 0;
   int patternLen = 0, patternWid = 0;
-  int **pattern;
 
   cout << "Enter string for file name containing pattern: " << endl;
   cin >> filename;
