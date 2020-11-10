@@ -59,6 +59,10 @@ void insertPattern(ColorImageClass &image)  {
   }
   */  
 
+  cout << "Enter upper left corner of pattern row and column: ";
+  cin >> inRow >> inCol;
+
+  /*
 	// pattern file contents error checking
   isValidInput = false;
   while (!isValidInput)  {
@@ -83,6 +87,7 @@ void insertPattern(ColorImageClass &image)  {
       isValidInput = true;
     }
   }
+  */
 
   upperLeftLocation.setRowCol(inRow, inCol);
   patternColor = selectColor("pattern");
