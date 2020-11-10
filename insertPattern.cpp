@@ -99,7 +99,7 @@ void insertPattern(ColorImageClass &image)  {
   upperLeftLocation.setRowCol(inRow, inCol);
   patternColor = selectColor("pattern");
 
-  TransparencyClass pattern(patternLen, patternWid);
+  // TransparencyClass pattern(patternLen, patternWid);
   
   /*
   // read in pattern
