@@ -166,7 +166,7 @@ void annotateRect(ColorImageClass &image)  {
     }
 
     isValidInput = false;
-    while (isValidInput)  {
+    while (!isValidInput)  {
       cout << "Enter int for number of columns " << endl;
       cin >> numCol;
       if (cin.fail())  {
