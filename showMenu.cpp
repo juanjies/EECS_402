@@ -21,7 +21,7 @@ int showMenu()  {
     
     cin  >> topMenuOpt;
     // error cheching for cin
-    if (cin.fail)  {
+    if (cin.fail())  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN);
       cout << "Error found when reading the input" 
