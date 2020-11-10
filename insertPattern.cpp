@@ -21,17 +21,8 @@ void insertPattern(ColorImageClass &image)  {
   int inRow = 0, inCol = 0, tempInt = 0;
   int patternLen = 0, patternWid = 0;
 
-  cout << "Enter string for file name containing pattern: " << endl; 
-  cin >> fileName;
-  inFile.open(fileName.c_str());
 
-  inFile >> patternWid;
-  inFile >> patternLen;
-
-  cout << patternWid << '\n'
-       << patternLen << endl;
-
-  /*
+  
   // error checking for fileName and Width and Length contents
   while (!isValidInput)  {
     cout << "Enter string for file name containing pattern: " << endl;    
@@ -62,14 +53,9 @@ void insertPattern(ColorImageClass &image)  {
       isValidInput = true;
     }
   }
-  */  
+  
 
-  cout << "Enter upper left corner of pattern row and column: ";
-  cin >> inRow >> inCol;
-
-  cout << inRow << '\n'
-       << inCol << endl;
-  /*
+  
 	// pattern file contents error checking
   isValidInput = false;
   while (!isValidInput)  {
@@ -94,14 +80,14 @@ void insertPattern(ColorImageClass &image)  {
       isValidInput = true;
     }
   }
-  */
+  
 
   upperLeftLocation.setRowCol(inRow, inCol);
   patternColor = selectColor("pattern");
 
   TransparencyClass pattern(patternLen, patternWid);
   
-  /*
+  
   // read in pattern
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     for (int cInd = 0; cInd < patternWid; cInd++)  {
@@ -126,5 +112,4 @@ void insertPattern(ColorImageClass &image)  {
       }
     }
   }
-  */
 }
