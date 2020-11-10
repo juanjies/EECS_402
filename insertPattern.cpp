@@ -21,16 +21,21 @@ void insertPattern(ColorImageClass &image)  {
   int inRow = 0, inCol = 0, tempInt = 0;
   int patternLen = 0, patternWid = 0;
 
-  cout << "Enter string for file name containing pattern: " << endl;    cin >> fileName;
+  cout << "Enter string for file name containing pattern: " << endl; 
+  cin >> fileName;
   inFile.open(fileName.c_str());
 
   inFile >> patternWid;
   inFile >> patternLen;
 
+  cout << patternWid << '\n';
+       << patternLen << endl;
+
   /*
   // error checking for fileName and Width and Length contents
   while (!isValidInput)  {
-    cout << "Enter string for file name containing pattern: " << endl;    cin >> fileName;
+    cout << "Enter string for file name containing pattern: " << endl;    
+    cin >> fileName;
     inFile.open(fileName.c_str());
 
     if (inFile.eof())  {
@@ -62,6 +67,8 @@ void insertPattern(ColorImageClass &image)  {
   cout << "Enter upper left corner of pattern row and column: ";
   cin >> inRow >> inCol;
 
+  cout << inRow << '\n'
+       << inCol << endl;
   /*
 	// pattern file contents error checking
   isValidInput = false;
