@@ -95,7 +95,7 @@ void insertPattern(ColorImageClass &image)  {
           upperLeftLocation.getCol() + cInd);
         image.setColorAtLocation(tempLocation, patternColor);
       }
-      else if (pattern.getTransAtLocation() == 0) {
+      else if (pattern.getTransAtLocation(rInd, cInd) == 0) {
         ;
       }
     }
