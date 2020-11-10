@@ -31,10 +31,18 @@ void annotateRect(ColorImageClass &image)  {
     if (cin.fail())  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification method input" << endl;
+      cout << "Invalid specification method input" 
+           << " - expected an integer of 1 or 2 or 3 " << '\n' 
+           << "try again"
+           << endl;
     }
     else if (rectOption > 3 || rectOption < 1)  {
-      cout << "Invalid specification method input" << endl;
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification method input" 
+           << " - expected an integer of 1 or 2 or 3 " << '\n' 
+           << "try again"
+           << endl;
     }
     else  {
       isValidInput = true;
@@ -48,68 +56,226 @@ void annotateRect(ColorImageClass &image)  {
       // get rectangle region
       cout << "Enter upper left corner row and column: " << endl;
       cin >> inRow >> inCol;
-      upperLeftLocation.setRowCol(inRow, inCol);
-      cout << "Enter lower right corner row and column: " << endl;
-      cin >> inRow >> inCol;
-      lowerRightLocation.setRowCol(inRow, inCol);
- 
+
       if (cin.fail())  {
-        cin.clear();
-        cin.ignore(IGNORED_CHAR_LEN, '\n');
-        cout << "Invalid input!";
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row or column input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+      else if (inRow < 1 || inCol < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification method input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
       }
       else  {
+        isValidInput = true;
+        upperLeftLocation.setRowCol(inRow, inCol);
+      }
+    }
+
+    isValidInput = false;
+    while (!isValidInput)  {
+      cout << "Enter lower right corner row and column: " << endl;
+      cin >> inRow >> inCol;
+ 
+      if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row or column input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+      else if (inRow < 1 || inCol < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification method input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
+      }
+      else  {
+        lowerRightLocation.setRowCol(inRow, inCol);
         isValidInput = true;
       }
     }
   }  
+  
   // method 2 - upper left and dimension
   else if (rectOption == 2)  {
     isValidInput = false;
-
+    // error checking for row and column input for upperLeftLocation
     while (!isValidInput)  {
+      // get rectangle region
       cout << "Enter upper left corner row and column: " << endl;
       cin >> inRow >> inCol;
-      upperLeftLocation.setRowCol(inRow, inCol);
-      cout << "Enter int for number of rows: " << endl;
-      cin >> numRow;
-      cout << "Enter int for number of columns " << endl;
-      cin >> numCol;
-      lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
 
       if (cin.fail())  {
-        cin.clear();
-        cin.ignore(IGNORED_CHAR_LEN, '\n');
-        cout << "Invalid input!";
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row or column input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+      else if (inRow < 1 || inCol < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification method input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
+      }
+      else  {
+        isValidInput = true;
+        upperLeftLocation.setRowCol(inRow, inCol);
+      }
+    }
+
+    isValidInput = false;
+    while (!isValidInput)  {
+      cout << "Enter int for number of rows: " << endl;
+      cin >> numRow;
+
+      if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row number input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+
+      else if (numRow < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row number input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
       }
       else  {
         isValidInput = true;
       }
+    }
+
+    isValidInput = false;
+    while (isValidInput)  {
+      cout << "Enter int for number of columns " << endl;
+      cin >> numCol;
+      if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification column number input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+
+      else if (numCol < 1 )  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification column number input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
+      }
+      else  {
+        isValidInput = true;
+      }
+      lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
     }
   }
   // method 3 - center and dimension
   else if (rectOption == 3)  {
+    
     isValidInput = false;
-
     while (!isValidInput)  {
       cout << "Enter rectangle center row and column: " << endl;
       cin >> inRow >> inCol;
-      cout << "Enter int for half number of rows: " << endl;
-      cin >> numRow;
-      cout << "Enter int for half number of columns " << endl;
-      cin >> numCol;
-      upperLeftLocation.setRowCol(inRow - numRow, inCol - numCol);
-      lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
 
       if (cin.fail())  {
-        cin.clear();
-        cin.ignore(IGNORED_CHAR_LEN, '\n');
-        cout << "Invalid input!";
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row or column input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+      else if (inRow < 1 || inCol < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification method input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
       }
       else  {
         isValidInput = true;
       }
     }
+
+    isValidInput = false;
+    while (!isValidInput)  {
+      cout << "Enter int for half number of rows: " << endl;
+      cin >> numRow;
+
+      if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row number input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+
+      else if (numCol < 1 )  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification row number input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
+      }
+      else  {
+        isValidInput = true;
+      }
+    }
+
+    isValidInput = false;
+    while (!isValidInput)  {
+      cout << "Enter int for half number of columns " << endl;
+      cin >> numCol;
+
+      if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification column number input" 
+           << " - expected positive integers " << '\n' 
+           << "try again"
+           << endl;
+      }
+
+      else if (numCol < 1)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid specification column number input" 
+           << " - expected positive integers " << '\n'  
+           << "try again"
+           << endl;
+      }
+      else  {
+        isValidInput = true;
+      }
+    }
+    upperLeftLocation.setRowCol(inRow - numRow, inCol - numCol);
+    lowerRightLocation.setRowCol(inRow + numRow, inCol + numCol);
   } 
 
   // get rectangle color
