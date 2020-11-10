@@ -125,6 +125,30 @@ int main ()  {
       inFile >> tempRed;
       inFile >> tempGreen;
       inFile >> tempBlue;
+      if (inFile.eof())  {
+        cout << "EOF before reading any pixel" << endl;
+        exit(0);
+      }
+      else if (inFile.fail())  {
+        inFile.clear();
+        inFile.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Error found when trying to read the pixels"
+             << " - expected three RGB integers "
+             << "between 0 and 255, inclusively"
+             << endl;
+        exit(0);
+      }
+      else if (tempRed > COLOR_RANGE_MAX || tempRed < COLOR_RANGE_MIN
+               || tempGreen > COLOR_RANGE_MAX 
+               || tempGreen < COLOR_RANGE_MIN
+               || tempBlue > COLOR_RANGE_MAX
+               || tempBlue < COLOR_RANGE_MIN)  {
+        cout << "Error found when trying to read the pixels"
+             << " - expected three RGB integers "
+             << "between 0 and 255, inclusively"
+             << endl;
+        exit(0);
+      }
       tempLocation.setRowCol(rInd, cInd);
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       image.setColorAtLocation(tempLocation, tempPixel);
