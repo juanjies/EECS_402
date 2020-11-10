@@ -38,35 +38,28 @@ int main ()  {
   cin >> fileName;
   
 	// file error checking
-  isValidInput = false;
   inFile.open(fileName.c_str());
 
-  if (inFile.eof())  {
-    cout << "EOF before reading the image" << endl;
-    inFile.clear();
-    inFile.ignore(IGNORED_CHAR_LEN, '\n');
-    exit(0);
-  }
-  else if (inFile.fail())  {
-    cout << "Cannot open the file";
-    inFile.clear();
-    inFile.ignore(IGNORED_CHAR_LEN, '\n');
+  if (inFile.fail())  {
+    cout << "Cannot open the file" << endl;
     exit(0);
   }
   else  {
+
     inFile >> magicNum;
-    inFile >> imageWid;
-    inFile >> imageLen;
-    inFile >> maxColorValue;
-    
-    if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+    if (inFile.eof())  {
+      cout << "EOF before reading the magic number" << endl;
+      exit(0);
+    }
+    else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
       cout << "Error found when trying to read magic number." 
            << " - expected P3 but found " << magicNum << endl;
       exit(0);
     }
-    else if (maxColorValue != COLOR_RANGE_MAX)  {
-      cout << "Error found when trying to read the maximum color value" 
-           << " - expected 256 but found " << maxColorValue << endl;
+
+    inFile >> imageWid;
+    if (inFile.eof())  {
+      cout << "EOF before reading the image width" << endl;
       exit(0);
     }
     else if (imageWid < 0)  {
@@ -75,14 +68,28 @@ int main ()  {
            << imageWid << endl;
       exit(0);
     }
+
+    inFile >> imageLen;
+    if (inFile.eof())  {
+      cout << "EOF before reading the image length" << endl;
+      exit(0);
+    }
     else if (imageLen < 0)  {
       cout << "Error found when trying to read the image length " 
            << " - expected a positive integer but found " 
            << imageLen << endl;
       exit(0);
     }
-    else {
-      isValidInput = true;
+
+    inFile >> maxColorValue;
+    if (inFile.eof())  {
+      cout << "EOF before reading the maximum color value" << endl;
+      exit(0);
+    }
+    else if (maxColorValue != COLOR_RANGE_MAX)  {
+      cout << "Error found when trying to read the maximum color value" 
+           << " - expected 256 but found " << maxColorValue << endl;
+      exit(0);
     }
   }
 
