@@ -101,6 +101,7 @@ void insertPattern(ColorImageClass &image)  {
 
   TransparencyClass pattern(patternLen, patternWid);
   
+  /*
   // read in pattern
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     for (int cInd = 0; cInd < patternWid; cInd++)  {
@@ -125,4 +126,5 @@ void insertPattern(ColorImageClass &image)  {
       }
     }
   }
+  */
 }
