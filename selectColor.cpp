@@ -26,12 +26,14 @@ ColorClass selectColor(string colorTarget)  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid color input" 
-           << " - expected an integer between 1 and 5, inclusively" 
+           << " - expected an integer between 1 and 5, inclusively " 
+           << "try again"
            << endl;
     }
     else if (colorOption > 5 || colorOption < 1)  {
       cout << "Invalid color input" 
            << " - expected an integer between 1 and 5, inclusively" 
+           << "try again"
            << endl;
     }
     else  {
