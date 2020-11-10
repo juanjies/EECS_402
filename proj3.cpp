@@ -58,7 +58,7 @@ int main ()  {
       inFile.clear();
 		}
 		else if (inFile.fail())  {
-      cout << "Cannot open the file"
+      cout << "Cannot open the file";
 			inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
 		}
