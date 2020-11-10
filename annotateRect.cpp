@@ -58,20 +58,20 @@ void annotateRect(ColorImageClass &image)  {
       cin >> inRow >> inCol;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row or column input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row or column input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
-      else if (inRow < 1 || inCol < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification method input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (inRow < 0 || inCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification method input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -85,20 +85,20 @@ void annotateRect(ColorImageClass &image)  {
       cin >> inRow >> inCol;
  
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row or column input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row or column input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
-      else if (inRow < 1 || inCol < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification method input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (inRow < 0 || inCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification method input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         lowerRightLocation.setRowCol(inRow, inCol);
@@ -117,20 +117,20 @@ void annotateRect(ColorImageClass &image)  {
       cin >> inRow >> inCol;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row or column input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row or column input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
-      else if (inRow < 1 || inCol < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification method input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (inRow < 0 || inCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification method input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -144,21 +144,21 @@ void annotateRect(ColorImageClass &image)  {
       cin >> numRow;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row number input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row number input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
 
-      else if (numRow < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row number input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (numRow < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row number input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -170,21 +170,21 @@ void annotateRect(ColorImageClass &image)  {
       cout << "Enter int for number of columns " << endl;
       cin >> numCol;
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification column number input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification column number input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
 
-      else if (numCol < 1 )  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification column number input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (numCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification column number input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -201,20 +201,20 @@ void annotateRect(ColorImageClass &image)  {
       cin >> inRow >> inCol;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row or column input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row or column input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
-      else if (inRow < 1 || inCol < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification method input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (inRow < 0 || inCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification method input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -227,21 +227,21 @@ void annotateRect(ColorImageClass &image)  {
       cin >> numRow;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row number input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row number input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
 
-      else if (numCol < 1 )  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification row number input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (numCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification row number input" 
+            << " - expected non-negative integers " << '\n'  
+            << "try again"
+            << endl;
       }
       else  {
         isValidInput = true;
@@ -254,21 +254,21 @@ void annotateRect(ColorImageClass &image)  {
       cin >> numCol;
 
       if (cin.fail())  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification column number input" 
-           << " - expected positive integers " << '\n' 
-           << "try again"
-           << endl;
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification column number input" 
+            << " - expected positive integers " << '\n' 
+            << "try again"
+            << endl;
       }
 
-      else if (numCol < 1)  {
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid specification column number input" 
-           << " - expected positive integers " << '\n'  
-           << "try again"
-           << endl;
+      else if (numCol < 0)  {
+        cin.clear();
+        cin.ignore(IGNORED_CHAR_LEN, '\n');
+        cout << "Invalid specification column number input" 
+             << " - expected non-negative integers " << '\n'  
+             << "try again"
+             << endl;
       }
       else  {
         isValidInput = true;

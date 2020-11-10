@@ -24,45 +24,70 @@ void insertImage(ColorImageClass &image)  {
   ColorClass transColor, tempPixel;
   RowColumnClass upperLeftLocation, tempLocation;
 
-  cout << "Enter string for file name of PPM image to insert: " << endl;
-  cin >> fileName;
-  inFile.open(fileName.c_str());
+  while (!isValidInput)  {
+    cout << "Enter string for file name of PPM image to insert: " << endl;
+    cin >> fileName;
+    inFile.open(fileName.c_str());
 
-  // error check for file opening process
-  if (inFile.fail())  {
-		cout << "Unable to open image file!" << endl;
-    exit(1);
-	}
+    if (inFile.fail())  {
+      cout << "Unable to open image file " << '\n'
+           << "Try again."
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      inFile.clear();
+      inFile.ignore(IGNORED_CHAR_LEN, '\n');
+    }
+    else  {
+      isValidInput = true;
+    }
+  }
+
+  isValidInput = false;
 	// pattern file contents error checking
   while (!isValidInput)  {
+    inFile >> magicNum;
+    
     if (inFile.eof())  {
-			cout << "EOF before reading the image" << endl;
-      exit(2);
-		}
-		else if (inFile.fail())  {
-			inFile.clear();
-      inFile.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid image" << endl;
-		}
-    else  {
-      inFile >> magicNum;
-      inFile >> imageWid;
-      inFile >> imageLen;
-      inFile >> maxColorValue;
+      cout << "EOF before reading the magic number" << endl;
+      break;
+    }
+    else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+      cout << "The Magic Number of the .ppm file is invalid." << endl;
+      break;
+    }
+    
+    inFile >> imageWid;
+    inFile >> imageLen;
 
-      if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
-        cout << "The Magic Number of the .ppm file is invalid." << endl;
-      }
-      else if (maxColorValue != COLOR_RANGE_MAX)  {
-        cout << "The maximum color value of the .ppm file is invalid." 
-             << endl;
-      }
-      else if (imageWid < 0 || imageLen < 0)  {
-        cout << "The dimension of the input .ppm file is invalid." << endl;
-      }
-      else {
-        isValidInput = true;
-      }
+    if (inFile.eof())  {
+      cout << "EOF before reading the image Width and Length" << endl;
+      break;
+    }
+    else if (imageWid < 0 || imageLen < 0)  {
+      cout << "Error found when read the dimension of the image"
+           << " - expected both to be non-negative integers"
+           << endl;
+      break;
+    }
+
+    inFile >> maxColorValue;
+    if (inFile.eof())  {
+      cout << "EOF before reading the image maximum color value" << endl;
+      break;
+    }
+    else if (inFile.fail())  {
+      cout << "The maximum color value of the .ppm file is invalid." 
+           << " - expected to be " << COLOR_RANGE_MAX 
+           << endl;
+    }
+    else if (maxColorValue != COLOR_RANGE_MAX)  {
+      cout << "The maximum color value of the .ppm file is invalid." 
+           << " - expected to be " << COLOR_RANGE_MAX 
+           << endl;
+      break;
+    }
+    else {
+      isValidInput = true;
     }
   }
 
@@ -78,15 +103,22 @@ void insertImage(ColorImageClass &image)  {
     if (cin.fail())  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid row or column input" << endl;
+      cout << "Invalid row or column input"  << '\n'
+           << "Both should be positive integers" << '\n'
+           << "try again" << endl;
+    }
+    else if (inRow < 0 || inCol < 0)  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid row or column input"  << '\n'
+           << "Both should be positive integers" << '\n'
+           << "try again" << endl;
     }
     else  {
       isValidInput = true;
     }
   }
-
   upperLeftLocation.setRowCol(inRow, inCol);
-
   transColor = selectColor("tranparency"); 
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
@@ -96,6 +128,7 @@ void insertImage(ColorImageClass &image)  {
       inFile >> tempRed;
       inFile >> tempGreen;
       inFile >> tempBlue;
+
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       addedImage.setColorAtLocation(tempLocation, tempPixel);
       // get the pixel of addedImage 
@@ -122,10 +155,6 @@ void insertImage(ColorImageClass &image)  {
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
         image.setColorAtLocation(tempLocation, tempPixel);
-      }
-      // if it is transparent, then do nothing
-      else if (transMatrix.getTransAtLocation(rInd, cInd)) {
-        ;
       }
     }
   }
