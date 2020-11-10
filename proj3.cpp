@@ -31,7 +31,7 @@ int main ()  {
   int imageWid = 0, imageLen = 0, maxColorValue = 0; 
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
   int topMenuOpt = 0;
-  bool isValidInput = false, isSuccess = true;
+  bool isValidInput = false;
   
   // cin fileName error checking
   cout << "Enter string for PPM image file name to load: " << endl;
