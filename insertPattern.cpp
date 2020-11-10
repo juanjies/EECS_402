@@ -87,30 +87,48 @@ void insertPattern(ColorImageClass &image)  {
     patternColor = selectColor("pattern");
 
     TransparencyClass pattern(patternLen, patternWid);
-    
+  }  
+
     // read in pattern
     for (int rInd = 0; rInd < patternLen; rInd++)  {
       for (int cInd = 0; cInd < patternWid; cInd++)  {
-        inFile >> tempInt;
-        tempLocation.setRowCol(rInd, cInd);
-        if (tempInt == 0)  {
-          pattern.setTransAtLocation(tempLocation);
-        }
-        else if (tempInt == 1)  {
-          pattern.setNotTransAtLocation(tempLocation);
+        if (isSuccess)  {
+          inFile >> tempInt;
+
+          if (inFile.fail())  {
+            cout << "Error reading the pattern contents "
+                 << "- contents should be equal to 0 or 1"
+                 << endl;
+            isSuccess = false;
+          }
+          else if (tempInt > 1 || tempInt < 0) {
+            cout << "Error reading the pattern contents "
+                 << "- contents should be equal to 0 or 1"
+                 << endl;
+            isSuccess = false;
+          }
+
+          tempLocation.setRowCol(rInd, cInd);
+          if (tempInt == 0)  {
+            pattern.setTransAtLocation(tempLocation);
+          }
+          else if (tempInt == 1)  {
+            pattern.setNotTransAtLocation(tempLocation);
+          }
         }
       }
     }
 
-    // add pattern to the image
-    for (int rInd = 0; rInd < patternLen; rInd++)  {
-      for (int cInd = 0;  cInd < patternWid; cInd++)  {
-        if (!pattern.getTransAtLocation(rInd, cInd))  {
-          tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
-            upperLeftLocation.getCol() + cInd);
-          image.setColorAtLocation(tempLocation, patternColor);
+    if (isSuccess)  {
+      // add pattern to the image
+      for (int rInd = 0; rInd < patternLen; rInd++)  {
+        for (int cInd = 0;  cInd < patternWid; cInd++)  {
+          if (!pattern.getTransAtLocation(rInd, cInd))  {
+            tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
+              upperLeftLocation.getCol() + cInd);
+            image.setColorAtLocation(tempLocation, patternColor);
+          }
         }
       }
-    }
-  }
+    }  
 }

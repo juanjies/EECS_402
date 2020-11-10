@@ -22,9 +22,9 @@ class TransparencyClass  {
     // return true if it is 1 at the input location
     // reutrn false if it is 0 at the input location
     bool getTransAtLocation(int inRow, int inCol);
-    // assign 1 at the given matrix location
-    void setTransAtLocation(RowColumnClass &inRowCol);
     // assign 0 at the given matrix location
+    void setTransAtLocation(RowColumnClass &inRowCol);
+    // assign 1 at the given matrix location
     void setNotTransAtLocation(RowColumnClass &inRowCol);
 };
 #endif
