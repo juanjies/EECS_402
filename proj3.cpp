@@ -56,6 +56,7 @@ int main ()  {
     if (inFile.eof())  {
 			cout << "EOF before reading the image" << endl;
       inFile.clear();
+      inFile.ignore(IGNORED_CHAR_LEN, '\n');
 		}
 		else if (inFile.fail())  {
       cout << "Cannot open the file";
