@@ -39,7 +39,7 @@ int main ()  {
   
   if (inFile.fail())  {
 		cout << "Unable to open input file!" << endl;
-    exit(1);
+    // exit(1);
 	}
 	// file error checking
   while (!isValidInput)  {
