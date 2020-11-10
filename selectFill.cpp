@@ -23,10 +23,18 @@ bool selectFill()  {
     if (cin.fail())  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
-      cout << "Invalid fill option input" << endl;
+      cout << "Invalid fill option input" 
+           << " - expected an integer of 1 or 2 " 
+           << "try again"
+           << endl;
     }
     else if (fillOption > 2 || fillOption < 1)  {
-      cout << "Invalid fill option input" << endl;
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid fill option input" 
+           << " - expected an integer of 1 or 2 " 
+           << "try again"
+           << endl;
     }
     else  {
       isValidInput = true;
