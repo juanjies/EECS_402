@@ -27,11 +27,11 @@ int main ()  {
   string magicNum; 
   ColorClass tempPixel;
   RowColumnClass tempLocation;
-
+  
   int imageWid = 0, imageLen = 0, maxColorValue = 0; 
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
   int topMenuOpt = 0;
-  bool isValidInput = false;
+  bool isValidInput = false, isSuccess = true;
   
   // cin fileName error checking
   cout << "Enter string for PPM image file name to load: " << endl;
@@ -42,7 +42,7 @@ int main ()  {
 
   if (inFile.fail())  {
     cout << "Cannot open the file" << endl;
-    exit(0);
+    return 0;
   }
   else  {
 
