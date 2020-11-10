@@ -34,54 +34,55 @@ int main ()  {
   bool isValidInput = false;
   
   // cin fileName error checking
-  while (!isValidInput)  {
-    cout << "Enter string for PPM image file name to load: " << endl;
-    cin >> fileName;
-    
-    if (cin.fail())  {
-      cout << "Invalid file name!" << endl;
-      cin.clear();
-      cin.ignore(IGNORED_CHAR_LEN, '\n');
-    }
-    else  {
-      isValidInput = true;
-    }
-  }
+  cout << "Enter string for PPM image file name to load: " << endl;
+  cin >> fileName;
   
 	// file error checking
   isValidInput = false;
-  while (!isValidInput)  {
-    inFile.open(fileName.c_str());
+  inFile.open(fileName.c_str());
 
-    if (inFile.eof())  {
-			cout << "EOF before reading the image" << endl;
-      inFile.clear();
-      inFile.ignore(IGNORED_CHAR_LEN, '\n');
-		}
-		else if (inFile.fail())  {
-      cout << "Cannot open the file";
-			inFile.clear();
-      inFile.ignore(IGNORED_CHAR_LEN, '\n');
-		}
-    else  {
-      inFile >> magicNum;
-      inFile >> imageWid;
-      inFile >> imageLen;
-      inFile >> maxColorValue;
-      
-      if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
-        cout << "The Magic Number of the input file is invalid." << endl;
-      }
-      else if (maxColorValue != COLOR_RANGE_MAX)  {
-        cout << "The maximum color value of the input file is invalid." 
-             << endl;
-      }
-      else if (imageWid < 0 || imageLen < 0)  {
-        cout << "The dimension of the input file is invalid." << endl;
-      }
-      else {
-        isValidInput = true;
-      }
+  if (inFile.eof())  {
+    cout << "EOF before reading the image" << endl;
+    inFile.clear();
+    inFile.ignore(IGNORED_CHAR_LEN, '\n');
+    exit();
+  }
+  else if (inFile.fail())  {
+    cout << "Cannot open the file";
+    inFile.clear();
+    inFile.ignore(IGNORED_CHAR_LEN, '\n');
+    exit();
+  }
+  else  {
+    inFile >> magicNum;
+    inFile >> imageWid;
+    inFile >> imageLen;
+    inFile >> maxColorValue;
+    
+    if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+      cout << "Error found when trying to read magic number." 
+           << " - expected P3 but found " << magicNum << endl;
+      exit();
+    }
+    else if (maxColorValue != COLOR_RANGE_MAX)  {
+      cout << "Error found when trying to read the maximum color value" 
+           << " - expected 256 but found " << maxColorValue << endl;
+      exit();
+    }
+    else if (imageWid < 0)  {
+      cout << "Error found when trying to read the image width " 
+           << " - expected a positive integer but found " 
+           << imageWid << endl;
+      exit;
+    }
+    else if (imageLen < 0)  {
+      cout << "Error found when trying to read the image length " 
+           << " - expected a positive integer but found " 
+           << imageLen << endl;
+      exit();
+    }
+    else {
+      isValidInput = true;
     }
   }
 
@@ -93,10 +94,10 @@ int main ()  {
       // and a temp ColorClass object - temp Pixel
       // such that we can use the setColorAtLocation method 
       // to read in all pixels and dynamic allocate them 
-      tempLocation.setRowCol(rInd, cInd);
       inFile >> tempRed;
       inFile >> tempGreen;
       inFile >> tempBlue;
+      tempLocation.setRowCol(rInd, cInd);
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
       image.setColorAtLocation(tempLocation, tempPixel);
     }
