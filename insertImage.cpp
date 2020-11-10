@@ -4,6 +4,7 @@
 #include "ColorImageClass.h"
 #include "selectColor.h"
 #include <string>
+#include <string.h>
 #include "TransparencyClass.h"
 #include "RowColumnClass.h"
 #include "constants.h"
