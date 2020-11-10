@@ -24,7 +24,7 @@ bool selectFill()  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid fill option input" 
-           << " - expected an integer of 1 or 2 " 
+           << " - expected an integer of 1 or 2 " << '\n' 
            << "try again"
            << endl;
     }
@@ -32,7 +32,7 @@ bool selectFill()  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid fill option input" 
-           << " - expected an integer of 1 or 2 " 
+           << " - expected an integer of 1 or 2 " << '\n' 
            << "try again"
            << endl;
     }
