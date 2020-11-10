@@ -31,7 +31,7 @@ void insertImage(ColorImageClass &image)  {
 
     if (inFile.fail())  {
       cout << "Unable to open image file " << '\n'
-           << "Try again."
+           << "Try again.";
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       inFile.clear();
