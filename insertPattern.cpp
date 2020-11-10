@@ -28,7 +28,7 @@ void insertPattern(ColorImageClass &image)  {
   inFile >> patternWid;
   inFile >> patternLen;
 
-  cout << patternWid << '\n';
+  cout << patternWid << '\n'
        << patternLen << endl;
 
   /*
