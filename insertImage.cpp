@@ -93,11 +93,9 @@ void insertImage(ColorImageClass &image)  {
     }
   }
 
-  if (isSuccess)  {
-    ColorImageClass addedImage(imageLen, imageWid);
-    TransparencyClass transMatrix(imageLen, imageWid);
-  }
-
+  ColorImageClass addedImage(imageLen, imageWid);
+  TransparencyClass transMatrix(imageLen, imageWid);
+  
   isValidInput = false;
   while (!isValidInput && isSuccess)  {
     cout << "Enter upper left corner to insert image row and column: " 
