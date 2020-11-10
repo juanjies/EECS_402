@@ -82,12 +82,11 @@ void insertPattern(ColorImageClass &image)  {
     }
   }
   
-  if (isSuccess)  {
-    upperLeftLocation.setRowCol(inRow, inCol);
-    patternColor = selectColor("pattern");
+  
+  upperLeftLocation.setRowCol(inRow, inCol);
+  patternColor = selectColor("pattern");
 
-    TransparencyClass pattern(patternLen, patternWid);
-  }  
+  TransparencyClass pattern(patternLen, patternWid); 
 
     // read in pattern
     for (int rInd = 0; rInd < patternLen; rInd++)  {
