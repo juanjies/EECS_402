@@ -5,6 +5,7 @@
 #include "ColorClass.h"
 #include "selectColor.h"
 #include <cstdlib>
+#include "TransparencyClass.h"
 
 using namespace std;
 // Programmer: Juan-Jie Sun
@@ -17,7 +18,7 @@ void insertPattern(ColorImageClass &image)  {
   RowColumnClass upperLeftLocation, tempLocation;
   ColorClass patternColor;
   bool isValidInput = false;
-  int inRow = 0, inCol = 0;
+  int inRow = 0, inCol = 0, tempInt = 0;
   int patternLen = 0, patternWid = 0;
   int **pattern;
 
@@ -47,38 +48,64 @@ void insertPattern(ColorImageClass &image)  {
     }
   }
 
-  cout << "Enter upper left corner of pattern row and column: "<< endl;
-  cin >> inRow >> inCol;
+  isValidInput = false;
+  while (!isValidInput)  {
+    cout << "Enter upper left corner of pattern row and column: ";
+    cin >> inRow >> inCol;
+
+    if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid row or column input" << endl;
+    }
+    else  {
+      isValidInput = true;
+    }
+  }
+
   upperLeftLocation.setRowCol(inRow, inCol);
   patternColor = selectColor("pattern");
 
   // dynamic allocate a 2D array to read in the pattern
+  /*
   pattern = new int *[patternLen];
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     pattern[rInd] = new int[patternWid];
   }
+  */
+  TransparencyClass pattern(patternLen, patternWid);
+
   // read in pattern
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     for (int cInd = 0; cInd < patternWid; cInd++)  {
-      inFile >> pattern[rInd][cInd];
+      inFile >> tempInt;
+      tempLocation.setRowCol(rInd, cInd);
+      if (tempInt == 0)  {
+        pattern.setTransAtLocation(tempLocation);
+      }
+      else if (tempInt == 1)  {
+        pattern.setNotTransAtLocation(tempLocation);
+      }
     }
   }
   // add pattern to the image
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     for (int cInd = 0;  cInd < patternWid; cInd++)  {
-      if (pattern[rInd][cInd] == 1)  {
+      if (pattern.getTransAtLocation(rInd, cInd) == 1)  {
         tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
           upperLeftLocation.getCol() + cInd);
         image.setColorAtLocation(tempLocation, patternColor);
       }
-      else if (pattern[rInd][cInd] == 0) {
+      else if (pattern.getTransAtLocation == 0) {
         ;
       }
     }
   }
+  /*
   // deletion
   for (int rInd = 0; rInd < patternLen; rInd++)  {
     delete [] pattern[rInd];
   }
   delete [] pattern;
+  */
 }

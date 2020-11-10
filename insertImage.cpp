@@ -44,21 +44,46 @@ void insertImage(ColorImageClass &image)  {
       cout << "Invalid image" << endl;
 		}
     else  {
+      inFile >> magicNum;
+      inFile >> imageWid;
+      inFile >> imageLen;
+      inFile >> maxColorValue;
+
+      if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+        cout << "The Magic Number of the .ppm file is invalid." << endl;
+      }
+      else if (maxColorValue != COLOR_RANGE_MAX)  {
+        cout << "The maximum color value of the .ppm file is invalid." 
+             << endl;
+      }
+      else if (imageWid < 0 || imageLen < 0)  {
+        cout << "The dimension of the input .ppm file is invalid." << endl;
+      }
+      else {
+        isValidInput = true;
+      }
+    }
+  }
+
+  ColorImageClass addedImage(imageLen, imageWid);
+  TransparencyClass transMatrix(imageLen, imageWid);
+
+  isValidInput = false;
+  while (!isValidInput)  {
+    cout << "Enter upper left corner to insert image row and column: " 
+       << endl;
+    cin >> inRow >> inCol;
+
+    if (cin.fail())  {
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+      cout << "Invalid row or column input" << endl;
+    }
+    else  {
       isValidInput = true;
     }
   }
 
-  inFile >> magicNum;
-  inFile >> imageWid;
-  inFile >> imageLen;
-  inFile >> maxColorValue;
-  // .ppm contents checking
-  ColorImageClass addedImage(imageLen, imageWid);
-  TransparencyClass transMatrix(imageLen, imageWid);
-
-  cout << "Enter upper left corner to insert image row and column: " 
-       << endl;
-  cin >> inRow >> inCol;
   upperLeftLocation.setRowCol(inRow, inCol);
 
   transColor = selectColor("tranparency"); 

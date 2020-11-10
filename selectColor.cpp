@@ -19,7 +19,7 @@ ColorClass selectColor(string colorTarget)  {
        << "5. White" << endl;
   
   while (!isValidInput)  {
-    cout << "Enter int for "<< colorTarget << "color" << endl;
+    cout << "Enter int for "<< colorTarget << " color" << endl;
     cin >> colorOption;
 
     if (cin.fail())  {
