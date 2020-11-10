@@ -20,9 +20,10 @@ void insertPattern(ColorImageClass &image)  {
   bool isValidInput = false;
   int inRow = 0, inCol = 0, tempInt = 0;
   int patternLen = 0, patternWid = 0;
+  bool isSuccess = true;
 
   // error checking for fileName and Width and Length contents
-  while (!isValidInput)  {
+  while (!isValidInput && isSuccess)  {
     cout << "Enter string for file name containing pattern: " << endl;    
     cin >> fileName;
     inFile.open(fileName.c_str());
@@ -33,6 +34,7 @@ void insertPattern(ColorImageClass &image)  {
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
+      isSuccess = false;
 		}
 
     inFile >> patternWid;
@@ -46,6 +48,7 @@ void insertPattern(ColorImageClass &image)  {
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
+      isSuccess = false;
     }
     else  {
       isValidInput = true;
@@ -54,7 +57,7 @@ void insertPattern(ColorImageClass &image)  {
   
 	// pattern file contents error checking
   isValidInput = false;
-  while (!isValidInput)  {
+  while (!isValidInput && isSuccess)  {
     cout << "Enter upper left corner of pattern row and column: ";
     cin >> inRow >> inCol;
 
@@ -64,6 +67,7 @@ void insertPattern(ColorImageClass &image)  {
       cout << "Invalid row or column input"  << '\n'
            << "Both should be positive integers" << '\n'
            << "try again" << endl;
+      isSuccess = false;
     }
     else if (inRow < 0 || inCol < 0)  {
       cin.clear();
@@ -71,39 +75,41 @@ void insertPattern(ColorImageClass &image)  {
       cout << "Invalid row or column input"  << '\n'
            << "Both should be positive integers" << '\n'
            << "try again" << endl;
+      isSuccess = false;
     }
     else  {
       isValidInput = true;
     }
   }
   
+  if (isSuccess)  {
+    upperLeftLocation.setRowCol(inRow, inCol);
+    patternColor = selectColor("pattern");
 
-  upperLeftLocation.setRowCol(inRow, inCol);
-  patternColor = selectColor("pattern");
-
-  TransparencyClass pattern(patternLen, patternWid);
-  
-  // read in pattern
-  for (int rInd = 0; rInd < patternLen; rInd++)  {
-    for (int cInd = 0; cInd < patternWid; cInd++)  {
-      inFile >> tempInt;
-      tempLocation.setRowCol(rInd, cInd);
-      if (tempInt == 0)  {
-        pattern.setTransAtLocation(tempLocation);
-      }
-      else if (tempInt == 1)  {
-        pattern.setNotTransAtLocation(tempLocation);
+    TransparencyClass pattern(patternLen, patternWid);
+    
+    // read in pattern
+    for (int rInd = 0; rInd < patternLen; rInd++)  {
+      for (int cInd = 0; cInd < patternWid; cInd++)  {
+        inFile >> tempInt;
+        tempLocation.setRowCol(rInd, cInd);
+        if (tempInt == 0)  {
+          pattern.setTransAtLocation(tempLocation);
+        }
+        else if (tempInt == 1)  {
+          pattern.setNotTransAtLocation(tempLocation);
+        }
       }
     }
-  }
 
-  // add pattern to the image
-  for (int rInd = 0; rInd < patternLen; rInd++)  {
-    for (int cInd = 0;  cInd < patternWid; cInd++)  {
-      if (!pattern.getTransAtLocation(rInd, cInd))  {
-        tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
-          upperLeftLocation.getCol() + cInd);
-        image.setColorAtLocation(tempLocation, patternColor);
+    // add pattern to the image
+    for (int rInd = 0; rInd < patternLen; rInd++)  {
+      for (int cInd = 0;  cInd < patternWid; cInd++)  {
+        if (!pattern.getTransAtLocation(rInd, cInd))  {
+          tempLocation.setRowCol(upperLeftLocation.getRow() + rInd,
+            upperLeftLocation.getCol() + cInd);
+          image.setColorAtLocation(tempLocation, patternColor);
+        }
       }
     }
   }
