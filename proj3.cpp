@@ -33,21 +33,32 @@ int main ()  {
   int topMenuOpt = 0;
   bool isValidInput = false;
   
-  cout << "Enter string for PPM image file name to load: " << endl;
-  cin >> fileName;
-  inFile.open(fileName.c_str()); 
-  
-  if (inFile.fail())  {
-		cout << "Unable to open input file!" << endl;
-    // exit(1);
-	}
-	// file error checking
+  // cin fileName error checking
   while (!isValidInput)  {
+    cout << "Enter string for PPM image file name to load: " << endl;
+    cin >> fileName;
+    
+    if (cin.fail())  {
+      cout << "Invalid file name!" << endl;
+      cin.clear();
+      cin.ignore(IGNORED_CHAR_LEN, '\n');
+    }
+    else  {
+      isValidInput = true;
+    }
+  }
+  
+	// file error checking
+  isValidInput = false;
+  while (!isValidInput)  {
+    inFile.open(fileName.c_str());
+
     if (inFile.eof())  {
 			cout << "EOF before reading the image" << endl;
-      exit(2);
+      inFile.clear();
 		}
 		else if (inFile.fail())  {
+      cout << "Cannot open the file"
 			inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
 		}
