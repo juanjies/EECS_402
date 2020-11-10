@@ -49,68 +49,68 @@ int main ()  {
     inFile >> magicNum;
     if (inFile.eof())  {
       cout << "EOF before reading the magic number" << endl;
-      exit(0);
+      return 0;
     }
     else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
       cout << "Error found when trying to read magic number." 
            << " - expected P3 but found " << magicNum << endl;
-      exit(0);
+      return 0; 
     }
 
     inFile >> imageWid;
     if (inFile.eof())  {
       cout << "EOF before reading the image width" << endl;
-      exit(0);
+      return 0;
     }
     else if (inFile.fail())  {
       inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the image width "
            << " - expected a positive integer" << endl;
-      exit(0);
+      return 0;
     }
     else if (imageWid < 0)  {
       cout << "Error found when trying to read the image width " 
            << " - expected a positive integer but found " 
            << imageWid << endl;
-      exit(0);
+      return 0;
     }
 
     inFile >> imageLen;
     if (inFile.eof())  {
       cout << "EOF before reading the image length" << endl;
-      exit(0);
+      return 0;
     }
     else if (inFile.fail())  {
       inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the image length "
            << " - expected a positive integer" << endl;
-      exit(0);
+      return 0;
     }
     else if (imageLen < 0)  {
       cout << "Error found when trying to read the image length " 
            << " - expected a positive integer but found " 
            << imageLen << endl;
-      exit(0);
+      return 0;
     }
 
     inFile >> maxColorValue;
     if (inFile.eof())  {
       cout << "EOF before reading the maximum color value" << endl;
-      exit(0);
+      return 0;
     }
     else if (inFile.fail())  {
       inFile.clear();
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the maximum color value"
            << " - expected a positive integer" << endl;
-      exit(0);
+      return 0;
     }
     else if (maxColorValue != COLOR_RANGE_MAX)  {
       cout << "Error found when trying to read the maximum color value" 
            << " - expected 256 but found " << maxColorValue << endl;
-      exit(0);
+      return 0;
     }
   }
 
@@ -127,7 +127,7 @@ int main ()  {
       inFile >> tempBlue;
       if (inFile.eof())  {
         cout << "EOF before reading any pixel" << endl;
-        exit(0);
+        return 0;
       }
       else if (inFile.fail())  {
         inFile.clear();
@@ -136,7 +136,7 @@ int main ()  {
              << " - expected three RGB integers "
              << "between 0 and 255, inclusively"
              << endl;
-        exit(0);
+        return 0;
       }
       else if (tempRed > COLOR_RANGE_MAX || tempRed < COLOR_RANGE_MIN
                || tempGreen > COLOR_RANGE_MAX 
@@ -147,7 +147,7 @@ int main ()  {
              << " - expected three RGB integers "
              << "between 0 and 255, inclusively"
              << endl;
-        exit(0);
+        return 0;
       }
       tempLocation.setRowCol(rInd, cInd);
       tempPixel.setTo(tempRed, tempGreen, tempBlue);
@@ -185,4 +185,5 @@ int main ()  {
     }
   }
   inFile.close();
+  return 0;
 }
