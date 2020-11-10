@@ -7,7 +7,7 @@ using namespace std;
 // Date: November 2020
 // Purpose: output a colorclass object based on users' color choice
 
-ColorClass selectColor()  {
+ColorClass selectColor(string colorTarget)  {
   int colorOption = 0;
   ColorClass pixelColor;
   bool isValidInput = false;
@@ -19,7 +19,7 @@ ColorClass selectColor()  {
        << "5. White" << endl;
   
   while (!isValidInput)  {
-    cout << "Enter int for rectangle color" << endl;
+    cout << "Enter int for "<< colorTarget << "color" << endl;
     cin >> colorOption;
 
     if (cin.fail())  {

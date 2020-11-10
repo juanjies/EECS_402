@@ -61,8 +61,7 @@ void insertImage(ColorImageClass &image)  {
   cin >> inRow >> inCol;
   upperLeftLocation.setRowCol(inRow, inCol);
 
-  transColor = selectColor(); // cout problem here
-  // cout text always show rectangle color
+  transColor = selectColor("tranparency"); 
 
   for (int rInd = 0; rInd < imageLen; rInd++)  {
     for (int cInd = 0; cInd < imageWid; cInd++)  {

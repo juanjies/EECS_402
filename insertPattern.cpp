@@ -50,7 +50,7 @@ void insertPattern(ColorImageClass &image)  {
   cout << "Enter upper left corner of pattern row and column: "<< endl;
   cin >> inRow >> inCol;
   upperLeftLocation.setRowCol(inRow, inCol);
-  patternColor = selectColor();
+  patternColor = selectColor("pattern");
 
   // dynamic allocate a 2D array to read in the pattern
   pattern = new int *[patternLen];

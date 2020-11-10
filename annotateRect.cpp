@@ -113,7 +113,7 @@ void annotateRect(ColorImageClass &image)  {
   } 
 
   // get rectangle color
-  rectColor = selectColor();
+  rectColor = selectColor("rectangle");
   // get fill option
   isFilled = selectFill();
   // annotate the input object 
