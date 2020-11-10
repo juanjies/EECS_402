@@ -1,8 +1,15 @@
 #ifndef _ColorImageClass_H_
 #define _ColorImageClass_H_
 
+#include <iostream>
 #include "ColorClass.h"
 #include "RowColumnClass.h"
+
+using namespace std;
+// Programmer: Juan-Jie Sun
+// Date: December 2020
+// Purpose: Create a class to dynamic allocate a 2D array for 
+//          an image. Each element is a ColorClass object.
 
 class ColorImageClass  {
   private:
@@ -10,7 +17,7 @@ class ColorImageClass  {
     int arrayLen, arrayWid;
 
   public:
-    // set up a 2D array
+    // dynamic allocate a 2D array
     // value ctor sets all pixels to black
     ColorImageClass(int imageLen, int imageWid);
     // dtor: free the dynamic allocation 
@@ -35,5 +42,4 @@ class ColorImageClass  {
     int getColLen();
     int getRowLen();
 };
-
 #endif

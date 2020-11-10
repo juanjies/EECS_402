@@ -4,7 +4,7 @@
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
-// Purpose: Provide a Transparency matrix to help add pattern and image
+// Purpose: Provide a Transparency class to help add pattern and image
 //          0 means transparent, 1 means not transparent
 
 TransparencyClass::TransparencyClass(int inRow, int inCol)  {

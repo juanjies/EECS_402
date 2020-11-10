@@ -3,6 +3,10 @@
 #include "RowColumnClass.h"
 
 using namespace std;
+// Programmer: Juan-Jie Sun
+// Date: December 2020
+// Purpose: Implementations for RowColumnClass
+
 RowColumnClass::RowColumnClass()  {
   rowIndex = DEF_ROW_COL_VALUE;
   colIndex = DEF_ROW_COL_VALUE;

@@ -5,7 +5,8 @@
 using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
-// Purpose: output a colorclass object based on users' choice
+// Purpose: output a colorclass object based on users' color choice
+
 ColorClass selectColor()  {
   int colorOption = 0;
   ColorClass pixelColor;

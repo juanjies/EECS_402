@@ -16,7 +16,7 @@ class ColorClass  {
 
   public:
     // default constructor to set RGB to the max range
-    // which is while color
+    // which is the while color
     ColorClass();
     // value ctor to set RGB to the input values
     ColorClass(int inRed, int inGreen, int inBlue);
@@ -60,5 +60,4 @@ class ColorClass  {
     // return false if RGB are not the same
     bool compareColor(ColorClass &inPixel);
 };
-
 #endif

@@ -6,9 +6,11 @@
 #include "ColorImageClass.h"
 #include "selectFill.h"
 
+using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
-// Purpose: to annotate an image with a rectangle
+// Purpose: implement the function of annotating an image with a rectangle
+
 void annotateRect(ColorImageClass &image)  {
   int rectOption = 0;
   int inRow = 0, inCol = 0, numRow = 0, numCol = 0;
@@ -22,7 +24,6 @@ void annotateRect(ColorImageClass &image)  {
        << '\n'
        << "3. Specify extent from center of rectangle" << '\n';
          
-  
   while (!isValidInput)  {
     cout << "Enter int for retangle specification method" << endl;
     cin >> rectOption;
@@ -113,8 +114,10 @@ void annotateRect(ColorImageClass &image)  {
 
   // get rectangle color
   rectColor = selectColor();
+  // get fill option
   isFilled = selectFill();
   // annotate the input object 
+  // filled means a solid rectangle
   if (isFilled)  {
     for (int rInd = upperLeftLocation.getRow(); 
           rInd < lowerRightLocation.getRow();
@@ -127,6 +130,7 @@ void annotateRect(ColorImageClass &image)  {
       }
     }
   }
+  // not filled means an empty rectangle
   else if (!isFilled)  {
     // loop throught the top and the bottom row
     for (int rInd = upperLeftLocation.getRow();

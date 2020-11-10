@@ -7,6 +7,7 @@ using namespace std;
 // Date: November 2020
 // Purpose: output a boolean to determine if the rectangle annotation 
 //          should be filled or not
+
 bool selectFill()  {
   int fillOption = 0;
   bool isFill = false;

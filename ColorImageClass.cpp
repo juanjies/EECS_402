@@ -2,15 +2,19 @@
 #include "ColorImageClass.h"
 
 using namespace std;
+// Programmer: Juan-Jie Sun
+// Date: December 2020
+// Purpose: Create a class to dynamic allocate a 2D array for 
+//          an image. Each element is a ColorClass object.
+
 ColorImageClass::ColorImageClass(int imageLen, int imageWid)  {
   arrayLen = imageLen;
   arrayWid = imageWid;
-
   image = new ColorClass *[arrayLen];
+
   for (int rInd = 0; rInd < arrayLen; rInd++)  {
     image[rInd] = new ColorClass[arrayWid];
   }  
-
   for (int i = 0; i < arrayLen; i++)  {
     for (int j = 0; j < arrayWid; j++)  {
       image[i][j].setToBlack();

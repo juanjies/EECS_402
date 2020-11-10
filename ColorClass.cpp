@@ -6,92 +6,76 @@ using namespace std;
 
 // Programmer: Juan-Jie Sun
 // Date: November 2020
-// Purpose: Provide the inplementations for ctor and method in ColorClass
+// Purpose: Implementations for ColorClass
 
-ColorClass::ColorClass() 
-{
+ColorClass::ColorClass()  {
   valRed = COLOR_RANGE_MAX;
   valGreen = COLOR_RANGE_MAX;
   valBlue = COLOR_RANGE_MAX;
 }
 
-ColorClass::ColorClass(int inRed, int inGreen, int inBlue)
-{
+ColorClass::ColorClass(int inRed, int inGreen, int inBlue)  {
   valRed = clipColor(inRed);
   valGreen = clipColor(inGreen);
   valBlue = clipColor(inBlue);
 }
 
-void ColorClass::setToBlack()
-{
+void ColorClass::setToBlack()  {
   valRed = COLOR_RANGE_MIN;
   valGreen = COLOR_RANGE_MIN;
   valBlue = COLOR_RANGE_MIN;
 }
 
-void ColorClass::setToRed()
-{
+void ColorClass::setToRed()  {
   valRed = COLOR_RANGE_MAX;
   valGreen = COLOR_RANGE_MIN;
   valBlue = COLOR_RANGE_MIN;
 }
 
-void ColorClass::setToGreen()
-{
+void ColorClass::setToGreen()  {
   valRed = COLOR_RANGE_MIN;
   valGreen = COLOR_RANGE_MAX;
   valBlue = COLOR_RANGE_MIN;
 }
 
-void ColorClass::setToBlue()
-{
+void ColorClass::setToBlue()  {
   valRed = COLOR_RANGE_MIN;
   valGreen = COLOR_RANGE_MIN;
   valBlue = COLOR_RANGE_MAX;
 }
 
-void ColorClass::setToWhite()
-{
+void ColorClass::setToWhite()  {
   valRed = COLOR_RANGE_MAX;
   valGreen = COLOR_RANGE_MAX;
   valBlue = COLOR_RANGE_MAX;
 }
 
-bool ColorClass::needClip(int inColor)
-{
-  if (inColor > COLOR_RANGE_MAX)
-  {
+bool ColorClass::needClip(int inColor)  {
+  if (inColor > COLOR_RANGE_MAX)  {
     return true;
   }
-  else if (inColor < COLOR_RANGE_MIN)
-  {
+  else if (inColor < COLOR_RANGE_MIN)  {
     return true;
   }
-  else
-  {
+  else  {
     return false;
   }
 }
 
-int ColorClass::clipColor(int inColor)
-{
-  if (inColor < COLOR_RANGE_MIN)
-  {
+int ColorClass::clipColor(int inColor)  {
+  if (inColor < COLOR_RANGE_MIN)  {
     inColor = COLOR_RANGE_MIN;
   }
-  else if (inColor > COLOR_RANGE_MAX)
-  {
+  else if (inColor > COLOR_RANGE_MAX)  {
     inColor = COLOR_RANGE_MAX;
   }
-  else
-  {
+  else  {
     ;
   }
   return inColor;
 }
 
-bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
-{ 
+bool ColorClass::setTo(int inRed, int inGreen, int inBlue)  { 
   valRed = clipColor(inRed);
   valGreen = clipColor(inGreen);
   valBlue = clipColor(inBlue);
@@ -101,8 +85,7 @@ bool ColorClass::setTo(int inRed, int inGreen, int inBlue)
           || needClip(inBlue));
 }
 
-bool ColorClass::setTo(ColorClass &inColor)
-{
+bool ColorClass::setTo(ColorClass &inColor)  {
   valRed = clipColor(inColor.valRed);
   valGreen = clipColor(inColor.valGreen);
   valBlue = clipColor(inColor.valBlue);
@@ -112,8 +95,7 @@ bool ColorClass::setTo(ColorClass &inColor)
           || needClip(inColor.valBlue));
 }
 
-bool ColorClass::addColor(ColorClass &rhs)
-{
+bool ColorClass::addColor(ColorClass &rhs)  {
   bool doClip = false;
   doClip = needClip(valRed + rhs.valRed)
            || needClip(valGreen + rhs.valGreen)
@@ -125,8 +107,7 @@ bool ColorClass::addColor(ColorClass &rhs)
   return doClip;
 }
 
-bool ColorClass::subtractColor(ColorClass &rhs)
-{
+bool ColorClass::subtractColor(ColorClass &rhs)  {
   bool doClip = false;
   doClip = needClip(valRed - rhs.valRed)
            || needClip(valGreen - rhs.valGreen)
@@ -138,8 +119,7 @@ bool ColorClass::subtractColor(ColorClass &rhs)
   return doClip;
 }
 
-bool ColorClass::adjustBrightness(double adjFactor)
-{
+bool ColorClass::adjustBrightness(double adjFactor)  {
   bool doClip = false;
   doClip = needClip(valRed * adjFactor)
            || needClip(valGreen * adjFactor)

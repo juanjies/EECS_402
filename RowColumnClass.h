@@ -1,8 +1,15 @@
 #ifndef _RowColumnClass_H_
 #define _RowColumnClass_H_
 
-class RowColumnClass
-{
+#include <iostream>
+#include "RowColumnClass.h"
+
+using namespace std;
+// Programmer: Juan-Jie Sun
+// Date: December 2020
+// Purpose: Create a class for processing 2D locations 
+
+class RowColumnClass  {
   private:
     int rowIndex;  
     int colIndex;  
