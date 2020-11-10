@@ -67,7 +67,7 @@ int main ()  {
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the image width "
            << " - expected a positive integer" << endl;
-      exit(0)
+      exit(0);
     }
     else if (imageWid < 0)  {
       cout << "Error found when trying to read the image width " 
@@ -86,7 +86,7 @@ int main ()  {
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the image length "
            << " - expected a positive integer" << endl;
-      exit(0)
+      exit(0);
     }
     else if (imageLen < 0)  {
       cout << "Error found when trying to read the image length " 
@@ -105,7 +105,7 @@ int main ()  {
       inFile.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Error found when trying to read the maximum color value"
            << " - expected a positive integer" << endl;
-      exit(0)
+      exit(0);
     }
     else if (maxColorValue != COLOR_RANGE_MAX)  {
       cout << "Error found when trying to read the maximum color value" 
