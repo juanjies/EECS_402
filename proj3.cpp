@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 #include <string.h>
 #include "constants.h"
 #include "ColorClass.h"
@@ -51,7 +50,8 @@ int main ()  {
       cout << "EOF before reading the magic number" << endl;
       return 0;
     }
-    else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+    // else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+    else if (magicNum.compare(MAGIC_NUM_PPM) != 0)  {
       cout << "Error found when trying to read magic number." 
            << " - expected P3 but found " << magicNum << endl;
       return 0; 
