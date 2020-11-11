@@ -175,7 +175,6 @@ int main ()  {
       if (outFile.fail())  {
         cout << "Cannot write to this file" << endl;
         outFile.clear();
-        outFile.ignore(IGNORED_CHAR_LEN, '\n');
       }
       else  {
         outFile << magicNum << endl;
