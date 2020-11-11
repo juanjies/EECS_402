@@ -52,7 +52,7 @@ void insertImage(ColorImageClass &image)  {
       cout << "EOF before reading the magic number" << endl;
       isSuccess = false;
     }
-    else if (strcmp(magicNum.c_str(), MAGIC_NUM_PPM) != 0)  {
+    else if (magicNum.compare(MAGIC_NUM_PPM) != 0)  {
       cout << "The Magic Number of the .ppm file is invalid." << endl;
       isSuccess = false;
     }
