@@ -12,6 +12,8 @@ bool selectFill()  {
   int fillOption = 0;
   bool isFill = false;
   bool isValidInput = false;
+  const int FILL_OPT_MIN = 1, FILL_OPT_MAX = 2;
+  const int NOT_FILL_OPT = 1, FILL_OPT = 2;
 
   cout << "1. No" << endl;
   cout << "2. Yes" << endl;
@@ -28,7 +30,8 @@ bool selectFill()  {
            << "try again"
            << endl;
     }
-    else if (fillOption > 2 || fillOption < 1)  {
+    else if (fillOption > FILL_OPT_MAX
+             || fillOption < FILL_OPT_MIN)  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid fill option input" 
@@ -40,11 +43,10 @@ bool selectFill()  {
       isValidInput = true;
     }
   }
-  
-  if (fillOption == 1)  {
+  if (fillOption == NOT_FILL_OPT)  {
     isFill = false;
   }
-  else if (fillOption == 2)  {
+  else if (fillOption == FILL_OPT)  {
     isFill = true;
   }
   return isFill;

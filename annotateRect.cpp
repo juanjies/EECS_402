@@ -14,6 +14,8 @@ using namespace std;
 void annotateRect(ColorImageClass &image)  {
   int rectOption = 0;
   int inRow = 0, inCol = 0, numRow = 0, numCol = 0;
+  const int OPT_MAX = 3, OPT_MIN = 1;
+  const int OPT_ONE = 1, OPT_TWO = 2, OPT_THREE = 3;
   bool isValidInput = false, isFilled = false;
   ColorClass rectColor;
   RowColumnClass upperLeftLocation, lowerRightLocation, tempLocation;
@@ -36,7 +38,7 @@ void annotateRect(ColorImageClass &image)  {
            << "try again"
            << endl;
     }
-    else if (rectOption > 3 || rectOption < 1)  {
+    else if (rectOption > OPT_MAX || rectOption < OPT_MIN)  {
       cin.clear();
       cin.ignore(IGNORED_CHAR_LEN, '\n');
       cout << "Invalid specification method input" 
@@ -49,7 +51,7 @@ void annotateRect(ColorImageClass &image)  {
     }
   }
   // method 1 - upper left and lower right
-  if (rectOption == 1)  {
+  if (rectOption == OPT_ONE)  {
     isValidInput = false;
     // error checking for row and column input
     while (!isValidInput)  {
@@ -108,7 +110,7 @@ void annotateRect(ColorImageClass &image)  {
   }  
   
   // method 2 - upper left and dimension
-  else if (rectOption == 2)  {
+  else if (rectOption == OPT_TWO)  {
     isValidInput = false;
     // error checking for row and column input for upperLeftLocation
     while (!isValidInput)  {
@@ -193,7 +195,7 @@ void annotateRect(ColorImageClass &image)  {
     }
   }
   // method 3 - center and dimension
-  else if (rectOption == 3)  {
+  else if (rectOption == OPT_THREE)  {
     
     isValidInput = false;
     while (!isValidInput)  {
