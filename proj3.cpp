@@ -31,7 +31,8 @@ int main ()  {
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
   int topMenuOpt = 0;
   bool isValidInput = false;
-  
+  const int menuOptNum = 5;
+  const int MENU_OPT[5] = {1,2,3,4,5}; 
   // cin fileName error checking
   cout << "Enter string for PPM image file name to load: " << endl;
   cin >> fileName;
@@ -155,20 +156,20 @@ int main ()  {
     }
   }
   
-  while (topMenuOpt != 5)  {
+  while (topMenuOpt != MENU_OPT[4])  {
     topMenuOpt = showMenu();
 
-    if (topMenuOpt == 1)  {
+    if (topMenuOpt == MENU_OPT[0])  {
       annotateRect(image);
     }
-    else if (topMenuOpt == 2)  {
+    else if (topMenuOpt == MENU_OPT[1])  {
       insertPattern(image);
     }
-    else if (topMenuOpt == 3)  {
+    else if (topMenuOpt == MENU_OPT[2])  {
       insertImage(image);
     }
     // write out current image
-    else if (topMenuOpt == 4)  {
+    else if (topMenuOpt == MENU_OPT[3])  {
       cout << "Enter string for PPM file name to output: " << endl;
       cin >> fileName;
       outFile.open(fileName.c_str());
@@ -185,7 +186,7 @@ int main ()  {
         outFile.close();
       }
     }
-    else if (topMenuOpt == 5)  {
+    else if (topMenuOpt == MENU_OPT[4])  {
       cout << "Thank you for using this program" << endl;
     }
   }
