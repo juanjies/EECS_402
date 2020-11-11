@@ -31,7 +31,7 @@ int main ()  {
   int tempRed = 0, tempGreen = 0, tempBlue = 0;
   int topMenuOpt = 0;
   bool isValidInput = false;
-  const int menuOptNum = 5;
+  const int MENU_OPT_NUM = 5;
   const int MENU_OPT[5] = {1,2,3,4,5}; 
   // cin fileName error checking
   cout << "Enter string for PPM image file name to load: " << endl;
@@ -158,7 +158,6 @@ int main ()  {
   
   while (topMenuOpt != MENU_OPT[4])  {
     topMenuOpt = showMenu();
-
     if (topMenuOpt == MENU_OPT[0])  {
       annotateRect(image);
     }

@@ -16,8 +16,7 @@ int showMenu()  {
        << "2. Annotate image with pattern from file" << '\n'
        << "3. Insert another image" << '\n'
        << "4. Write out current image" << '\n'
-       << "5. Exit the program" << '\n'
-       ;
+       << "5. Exit the program" << '\n';
 
   while (!isValidInput)  {
 
