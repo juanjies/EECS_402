@@ -172,13 +172,19 @@ int main ()  {
       cout << "Enter string for PPM file name to output: " << endl;
       cin >> fileName;
       outFile.open(fileName.c_str());
+      if (outFile.fail())  {
+        cout << "Cannot write to this file" << endl;
+        outFile.clear();
+        outFile.ignore(IGNORED_CHAR_LEN, '\n');
+      }
+      else  {
+        outFile << magicNum << endl;
+        outFile << imageWid << " " << imageLen << endl;
+        outFile << maxColorValue << endl;
 
-      outFile << magicNum << endl;
-      outFile << imageWid << " " << imageLen << endl;
-      outFile << maxColorValue << endl;
-
-      image.printImage(outFile);
-      outFile.close();
+        image.printImage(outFile);
+        outFile.close();
+      }
     }
     else if (topMenuOpt == 5)  {
       cout << "Thank you for using this program" << endl;
