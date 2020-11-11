@@ -21,7 +21,7 @@ int showMenu()  {
 
   while (!isValidInput)  {
 
-    cout << "Enter int for main menu choice: " << endl
+    cout << "Enter int for main menu choice: " << endl;
     cin  >> topMenuOpt;
     // error cheching for cin
     if (cin.fail())  {
