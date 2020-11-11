@@ -2,6 +2,7 @@
 #define _constants_H_
 
 #include <string>
+using namespace std;
 // Programmer: Juan-Jie Sun
 // Date: November 2020
 // Purpose: Provide all the global constants for EECS402 Project 3  
